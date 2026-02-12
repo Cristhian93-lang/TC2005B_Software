@@ -32,7 +32,7 @@ console.log(personaje_3);
 
 //--------- alert, promt, confirm
 alert("No juegues esto por favor");
-const personaje_favorito = promt("Cual es tu personaje favorito");
+const personaje_favorito = promt("¿Cual es tu personaje favorito?");
 console.info("Personaje favorito: " + personaje_favorito);
 
 const hoy_hay_juego = confirm("¿Un jueguito?");
@@ -41,3 +41,56 @@ if (hoy_hay_juego) {
 } else {
     console.info("Bune dia");
 }
+//----------Funciones tradicionales
+function descargar() {
+    window.location.href = "https://www.leagueoflegends.com/es-mx/"
+}
+
+if (hoy_hay_juego) {
+    descargar();
+} else {
+    console.info("Buen dia")
+}
+
+//funciones modernas
+() => {}
+
+document.getElementById("boton_desinstalar").onclick = () => {
+    alert("jo jo jo no se puede desinstalar");
+}
+
+const iniciar_partida = () => {
+    alert("Iniciar partida...");
+}
+
+iniciar_partida();
+
+//----------arrelgos
+const arreglo = ["Elemento"];
+
+const arreglo2 = new Array();
+
+personajes.push("Irelia");
+personajes[10] = "Leona";
+
+
+//arreglos asociativos
+personajes["Hola"] = "Lux";
+
+//recorrido tradicional del arreglo
+ for (let i = 0; i < personajes.length; i++) {
+    console.log(personajes[i]);
+ }
+
+ //recorridos alternativos del arreglo
+ for (let personaje in personajes) {
+    console.log(personajes);
+ }
+
+ //objetos
+ const eco_de_Luden = {
+    nombre: "Eco de luden",
+    color: "morado",
+    daño: 100
+ };
+console.log(eco_de_Luden);
