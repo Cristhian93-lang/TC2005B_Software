@@ -1,62 +1,65 @@
-// consola(log, info, warn,error, assert)
+// consola (log, info, warn, error, assert)
 console.log("hola mundo!");
 console.info("Creado en el 2009");
 console.warn("Es adictivo");
-console.error("Los tanques no deben ir atras");
-// == ---> Operado de comparacion de valores
-console.assert(1==true);
-// ==== ---> Operdaor "estrictamente igual" de comparacion de valor y tipo
-console.assert(1===true);
+console.error("Los tanques no deben ir atrás");
 
-//--------------------variables, constantes------------------------
-// Forma antigu de decharar variables
-// Tiene mayor alcance por lo qee no se recomienda
-var persaneje_1 = "Gwen";
+//== ---> Operador de comparación de valores
+console.assert(1 == true);
 
-// Forma moderna de declarar variables.
-//la variable solo vive dentro del ambito donde es declarada
+//=== ---> Operador "estrictamente igual" de comparación de valor y tipo
+console.assert(1 === true);
+
+
+//--------------- variables, constantes---------------
+
+//Forma antigua de declarar variables. 
+//Tiene mayor alcance por lo que no se recomienda
+var personaje_1 = "Gwen";
+
+//Forma moderna de declarar variables.
+//La variable sólo vive dentro del ámbito donde es declarada
 let personaje_2 = "Mordkeiser";
 
-//declarar constantes
+//Declarar constantes con const
 const precio_skin = 300;
 
-//alcance de la variables
+// Alcance de las variables
 {
     var personaje_3 = "Jax";
-    let personaje_4 = "Garen"
+    let personaje_4 = "Garen";
 }
 
 console.log(personaje_3);
-//La siguiente linea genera un error porque personaje_4 murio hace 3 lineas
+//La siguiente línea genera un error porque personaje_4 murió hace 3 líneas.
 //console.log(personaje_4);
 
-//--------- alert, promt, confirm
+
+//------------------ alert, prompt, confirm
 alert("No juegues esto por favor");
-const personaje_favorito = promt("¿Cual es tu personaje favorito?");
+
+const personaje_favorito = prompt("¿Cuál es tu personaje favorito?");
 console.info("Personaje favorito: " + personaje_favorito);
 
 const hoy_hay_juego = confirm("¿Un jueguito?");
-if (hoy_hay_juego) {
-    console.warn("¡A jugar!")
-} else {
-    console.info("Bune dia");
-}
-//----------Funciones tradicionales
+
+//----------------- funciones tradicionales
 function descargar() {
-    window.location.href = "https://www.leagueoflegends.com/es-mx/"
+    window.location.href = "https://www.leagueoflegends.com/es-mx/";
 }
 
 if (hoy_hay_juego) {
     descargar();
 } else {
-    console.info("Buen dia")
+    console.info("Buen día");
 }
 
-//funciones modernas
+
+// funciones modernas
 () => {}
 
 document.getElementById("boton_desinstalar").onclick = () => {
-    alert("jo jo jo no se puede desinstalar");
+    alert("jojojo no se puede desinstalar");
 }
 
 const iniciar_partida = () => {
@@ -65,32 +68,54 @@ const iniciar_partida = () => {
 
 iniciar_partida();
 
-//----------arrelgos
-const arreglo = ["Elemento"];
+
+//------------------ arreglos
+
+const personajes = ["Fizz"];
 
 const arreglo2 = new Array();
 
 personajes.push("Irelia");
 personajes[10] = "Leona";
 
-
 //arreglos asociativos
-personajes["Hola"] = "Lux";
+personajes["hola"] = "Lux";
 
 //recorrido tradicional del arreglo
- for (let i = 0; i < personajes.length; i++) {
+for (let i = 0; i < personajes.length; i++) {
     console.log(personajes[i]);
- }
+}
 
- //recorridos alternativos del arreglo
- for (let personaje in personajes) {
-    console.log(personajes);
- }
+//recorridos alternativos del arreglo
+for(let personaje in personajes) {
+    console.log(personaje);
+}
 
- //objetos
- const eco_de_Luden = {
-    nombre: "Eco de luden",
+
+//Objetos
+const eco_de_Luden = {
+    nombre: "Eco de Luden",
     color: "morado",
     daño: 100
- };
+}; 
+
 console.log(eco_de_Luden);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// modificar html
