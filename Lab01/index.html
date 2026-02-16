@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laboratorio 1</title>
+    </head>
+    <body>
+        <header>
+            <h1>Mi pagina Web</h1>
+            <p><strong>Cristhian Viery Maida Suarez</strong></p>
+            <p>Matricula: A01668790</p>
+            <p>Correo Electronico: A01668790@tec.mx</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#sobre-mi">Sobre mi</a></li>
+                <li><a href="#preguntas">Preguntas</a></li>
+                <li><a href="#sistemas">Sistemas de Informacion</a></li>
+                <li><a href="#formulario">Contacto</a></li>
+                <li><a href="#referencias">Referencias</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="sobre-mi">
+                <h2>Sobre mi</h2>
+                <article>
+                    <p>
+                       Hola, me llamo Cristhian Viery Maida Suarez, soy de Bolivia, lo que principalmente
+                       me aposiona son la lectura de los manhuas y manhwas ya que los encuentro interesantes,
+                       tambien me apasiona programar pero en c++ y python, aspiro a especializarme y aprender bastante
+                       el area de Inteligencia Artificial y Ciberseguridad. Desde luego me encanta las frutas como la uva y la piña,
+                       al igual que los postres como las donas. En el futuro quiero trabajar bastante en proyectos relacionados con Ciberseguridad
+                       e Inteligencia Artificial, para aprender como va evolucionando la tecnologia en esta área con el proposito de desarrollar mis propias
+                       IAs.
+                    </p>
+                </article>
+            </section>
+            <section id="preguntas">
+                <h2>Preguntas</h2>
+                <article>
+                    <h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
+                    <p>
+                        Internet es una red global de redes interconectadas que permite la comunicacion entre milllones
+                        de dispositivos mediante protocolos como TCP/IP. Es la infraestructura física y lógica que conecta
+                        computadoras en todo el mundo.
+                        La World Wide Web es un servicio que funciona sobre Internet y permite acceder a documentos y recursos
+                        mediante navegadores web usando el protocolo HTTP o HTTPS. La Web es solo uno de los servicios que utiliza 
+                        Internet, junto con el correo electrónico, FTP, entre otros.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Cuáles son las partes de un URL?</h3>
+                    <p>
+                        Un URL (Uniform Resource Locator) es la dirección que permite localizar un recurso en la Web. Está compuesto 
+                        por varias partes: el protocolo, que indica cómo se accederá al recurso (por ejemplo, https); el dominio, 
+                        que identifica el servidor donde se encuentra alojado el recurso; el puerto, que es opcional y especifica el servicio; 
+                        la ruta, que señala la ubicación específica del archivo dentro del servidor; los parámetros, que envían información adicional; 
+                        y el fragmento, que dirige a una sección específica dentro del documento.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
+                    <p>
+                        Los métodos HTTP definen el tipo de acción que se desea realizar sobre un recurso en un servidor. El método GET se utiliza para solicitar 
+                        información; HEAD obtiene únicamente los encabezados de la respuesta; POST se emplea para enviar datos al servidor, generalmente para crear 
+                        un recurso; PUT reemplaza completamente un recurso existente; PATCH modifica parcialmente un recurso; y DELETE elimina un recurso del servidor. 
+                        Estos métodos permiten que la comunicación entre cliente y servidor sea estructurada y organizada.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h3>
+                    <p>
+                        Cuando se envía un formulario que contiene usuario y contraseña, se debe utilizar el método POST. Esto se debe a que los datos se envían en el 
+                        cuerpo de la solicitud y no aparecen visibles en la URL, lo que reduce la exposición de información sensible. Además, los datos enviados por POST 
+                        no quedan almacenados directamente en el historial del navegador, lo que ofrece mayor seguridad en comparación con el método GET.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h3>
+                    <p>
+                        Cuando un usuario escribe una dirección en el navegador y accede a una página web, el navegador utiliza el método 
+                        GET para solicitar el recurso al servidor. Este método es el estándar para recuperar información sin modificar los 
+                        datos almacenados en el servidor.
+                    </p>
+                </article>
+                <article>
+                    <h3>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h3>
+                    <p>
+                        El código HTTP 200 indica que la solicitud realizada por el cliente fue procesada correctamente por el servidor y 
+                        que el recurso solicitado fue entregado exitosamente. Este código no representa ningún error, sino que confirma que 
+                        la comunicación fue exitosa.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</h3>
+                    <p>
+                        El error 404 indica que el recurso solicitado no fue encontrado en el servidor. Si este error se debe a un enlace interno mal configurado, a una ruta 
+                        incorrecta o a un recurso eliminado sin redirección adecuada, es responsabilidad del desarrollador corregirlo. Esto es importante porque los errores 404 
+                        afectan la experiencia del usuario y pueden perjudicar la credibilidad del sitio web.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</h3>
+                    <p>
+                        El error 500 indica un problema interno en el servidor, generalmente relacionado con errores en el código del backend, configuraciones incorrectas o fallos 
+                        en la base de datos. En la mayoría de los casos, sí es responsabilidad del desarrollador o del administrador del sistema corregirlo, ya que se trata de un 
+                        problema técnico que impide el correcto funcionamiento del sitio.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h3>
+                    <p>
+                        Cuando un elemento o atributo HTML está marcado como deprecated significa que ya no se recomienda su uso en versiones actuales del estándar, debido a que 
+                        ha sido reemplazado por alternativas más modernas y eficientes. En HTML5, varias etiquetas de HTML4 quedaron desaprobadas, como &lt;font&gt;, &lt;center&gt;, 
+                        &lt;big&gt;, &lt;strike&gt; y &lt;frame&gt;. En lugar de estas etiquetas, se recomienda utilizar CSS para controlar la presentación y el diseño.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h3>
+                    <p>
+                         HTML5 introduce etiquetas semánticas como header, nav, section, article y footer, que mejoran la estructura del documento. También incorpora soporte nativo 
+                         para audio y video, nuevos tipos de campos en formularios y una declaración DOCTYPE simplificada, lo que facilita el desarrollo de aplicaciones web modernas.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+                    <p>
+                        Una tabla en HTML se compone de los elementos table, thead, tbody, tr, th y td. La estructura organiza los datos en filas y columnas, mientras que el estilo 
+                        visual se controla mediante CSS para definir bordes, colores y alineación.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Cuáles son los principales controles de una forma HTML5?</h3>
+                    <p>
+                        Los principales controles incluyen input en sus diferentes tipos como text, email, password, number y date; textarea para texto extenso; select para listas desplegables; 
+                        y button para enviar datos. Estos controles permiten una mejor validación y experiencia de usuario.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h3>
+                    <p>
+                        El navegador Safari en macOS presenta un alto nivel de soporte para las características de HTML5, incluyendo multimedia, almacenamiento local y formularios avanzados. 
+                        Según herramientas como html5test.com, Safari ofrece compatibilidad sólida con los estándares actuales, lo que permite desarrollar aplicaciones web modernas con buen 
+                        rendimiento y compatibilidad.
+                    </p>
+                </article>
+            </section>
+            <section id="sistemmas">
+                <h2>Sobre el ciclo de vida y desarrollo de los sistemas de información</h2>
+                <article>
+                    <h3>¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+                    <p>
+                        El ciclo de vida de los sistemas de información describe las etapas generales por las que pasa un sistema desde su concepción hasta su retiro. Estas etapas incluyen 
+                        planeación, análisis, diseño, implementación, operación y mantenimiento. Cada fase cumple una función específica para garantizar que el sistema cumpla con los objetivos 
+                        organizacionales y se mantenga funcional a lo largo del tiempo.
+                    </p>
+                </article>
+                <article>
+                    <h3>¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+                    <p>
+                        El ciclo de desarrollo de sistemas, también conocido como SDLC, se enfoca específicamente en el proceso técnico de creación del software. Incluye la recolección de 
+                        requisitos, análisis, diseño, programación, pruebas, implementación y mantenimiento. Este ciclo permite estructurar el desarrollo del sistema de manera organizada, 
+                        asegurando calidad, eficiencia y reducción de errores.
+                    </p>
+                </article>
+            </section>
+            <section id="formulario">
+                <h2>Formulario de Contacto</h2>
+                <form action="#" method="post">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" requerid>
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" requerid>
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje"></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+            <section id="referencias">
+                <h2>Referencias</h2>
+                <article>
+                        <p>
+                            Berners-Lee, T. (1999). <em>Weaving the Web: The original design and ultimate destiny of the World Wide Web</em>. HarperCollins.
+                            https://www.w3.org/People/Berners-Lee/Weaving/
+                        </p>
+                        <p>
+                            Fielding, R., Nottingham, M., &amp; Reschke, J. (2022).
+                            <em>HTTP Semantics (RFC 9110)</em>. Internet Engineering Task Force (IETF).
+                            https://www.rfc-editor.org/rfc/rfc9110
+                        </p>
+                        <p>
+                            Mozilla Developer Network (MDN). (2023).
+                            <em>HTML: HyperText Markup Language</em>.
+                            https://developer.mozilla.org/en-US/docs/Web/HTML
+                        </p>
+                        <p>
+                            Mozilla Developer Network (MDN). (2023).
+                            <em>HTTP request methods</em>.
+                            https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+                        </p>
+                        <p>
+                            Laudon, K. C., &amp; Laudon, J. P. (2022).
+                            <em>Management information systems: Managing the digital firm</em> (17th ed.).
+                            Pearson.
+                        </p>
+                        <p>
+                            World Wide Web Consortium (W3C). (2014).
+                            <em>HTML5: A vocabulary and associated APIs for HTML and XHTML</em>.
+                            https://www.w3.org/TR/html5/
+                        </p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>Editor utilizado: Visual Studio Code</p>
+            <p><a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+        </footer>
+    </body>
+</html>
