@@ -1,6 +1,6 @@
 //----------Ejercicio 1--------
-/*
-let numero = parseInt(promt("Introduce un numero para generar una tabla con sus cuadrados y cubos:"));
+
+let numero = parseInt(prompt("Introduce un numero para generar una tabla con sus cuadrados y cubos:"));
 document.write("<h2>Ejercicio 1</h2>");
 document.write("<table border='1'>");
 document.write("<tr><th>Numero</th><th>Cuadrados</th><th>Cubo</th></tr>");
@@ -12,12 +12,12 @@ for (let i = 1; i <= numero; i++) {
     document.write("</tr>")
 }
 document.write("</table>");
-*/
+
 //----------Ejercicio 2--------
-let n1 = Math.floor(Math.ramdom() * 100);
+let n1 = Math.floor(Math.random() * 100);
 let n2 = Math.floor(Math.random() * 100 );
 let inicio = Date.now();
-let respuesta = parseInt(promt("¿Cuanto es" + n1 + " + " + n2 + "?"));
+let respuesta = parseInt(prompt("¿Cuanto es " + n1 + " + " + n2 + "?"));
 let fin = Date.now();
 let tiempo = (fin - inicio) / 1000;
 if (respuesta === n1 + n2) {
@@ -49,11 +49,11 @@ function contador(arreglo) {
 console.assert(contador([-1, 0, 2]).negativos === 1);
 console.assert(contador([-1, 0, 2]).ceros === 1);
 console.assert(contador([-1, 0, 2]).positivos === 1);
-console.assert(contador([-5, -3, 0, 4, 8]).positivos === 2);
-console.assert(contador([-5, -3, 0, 4, 8]).positivos === 1);
+console.assert(contador([-5, -3, 0, 4, 8]).negativos === 2);
+console.assert(contador([-5, -3, 0, 4, 8]).ceros === 1);
 console.assert(contador([-5, -3, 0, 4, 8]).positivos === 2);
 
-let entrada = promt("Ingresa numeros separados por comas (ejemplo: -3,0,5,7,-2,0): ");
+let entrada = prompt("Ingresa numeros separados por comas (ejemplo: -3,0,5,7,-2,0): ");
 let arregloUsuario = entrada.split(",").map(Number);
 let resultados = contador(arregloUsuario);
 
@@ -71,11 +71,56 @@ function promedios(matriz) {
         }
         resultados.push(suma / fila.length); 
     }
-    return resultado;
+    return resultados;
 }
 console.assert(promedios([[10,20], [30,40]])[0] === 15);
 let resultado4 = promedios([[5,10,15], [2,4,6]]);
-document.getElementById("test04").innerHTML = "Promedios: " + resultado4.join(", ");
+document.getElementById("test04").innerHTML = 
+"Promedios: " + resultado4.join(", ");
 
 //----------Ejercicio 5--------
+function inverso(numero) {
+    return parseInt(numero.toString().split("").reverse().join(""));
+}
+console.assert(inverso(5678) === 8765);
+//console.assert(inverso(9021) === 1209);
+let numeroPrueba = 5678;
+document.getElementById("test05").innerHTML = 
+"<h3>Resultado Ejercicio 5</h3>" + "Numero original: "
++ numeroPrueba + "<br>Numero invertido: " + inverso(numeroPrueba);
+
 //----------Ejercicio 6--------
+function modeloIA(nombre, correctas, total) {
+    this.nombre = nombre;
+    this.correctas = correctas;
+    this.total = total;
+    this. calcularPrecision = function() {
+        if (this.total === 0) {
+            return 0;
+        }
+        return (this.correctas / this.total) * 100;
+    };
+    this.agregarPrediccion = function(esCorrecta) {
+        this.total++;
+        if (esCorrecta) {
+            this.correctas++;
+        }
+    };
+}
+
+let modeloPrueba = new modeloIA("Modelo test", 8, 10);
+console.assert(Math.round(modeloPrueba.calcularPrecision()) === 80);
+modeloPrueba.agregarPrediccion(true);
+console.assert(modeloPrueba.correctas === 9);
+console.assert(modeloPrueba.total === 11);
+
+let miModelo = new modeloIA("Detector de Ataques", 15, 20);
+miModelo.agregarPrediccion(true);
+miModelo.agregarPrediccion(false);
+miModelo.agregarPrediccion(true);
+
+document.getElementById("test06").innerHTML += 
+"<h3>Resultado del Modelo</h3>" + "Nombre: " + miModelo.nombre +
+"<br>Predicciones correctas: " + miModelo.correctas +
+"<br>Total de predicciones: " + miModelo.total +
+"<br>Precision: " + miModelo.calcularPrecision().toFixed(2) + "%";
