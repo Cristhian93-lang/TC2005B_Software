@@ -62,6 +62,20 @@ document.getElementById("test03").innerHTML =
 "<br>Ceros: " + resultados.ceros + "<br>Positivos: " + resultados.positivos;
 
 //----------Ejercicio 4--------
+function promedios(matriz) {
+    let resultados = [];
+    for (let fila of matriz) {
+        let suma = 0;
+        for (let num of fila) {
+            suma += num;
+        }
+        resultados.push(suma / fila.length); 
+    }
+    return resultado;
+}
+console.assert(promedios([[10,20], [30,40]])[0] === 15);
+let resultado4 = promedios([[5,10,15], [2,4,6]]);
+document.getElementById("test04").innerHTML = "Promedios: " + resultado4.join(", ");
 
 //----------Ejercicio 5--------
 //----------Ejercicio 6--------
