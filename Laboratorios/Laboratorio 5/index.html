@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Laboratorio 5</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body class="grey lighten-4">
-        <nav class="blue darken-3">
+        <nav class="gradient-nav z-depth-2">
             <div class="nav-wrapper container">
                 <a href="#" class="brand-logo">Mi Proyecto Web</a>
                 <ul class="right hide-on-med-and-down">
@@ -16,7 +17,7 @@
                     <li><a href="#preguntas">Preguntas</a></li>
                     <li><a href="#sistemas">Sistemas de Informacion</a></li>
                     <li><a href="#css-preguntas">CSS</a></li>
-                    <li><a href="#javascript-preguntas">JavaScript</a></li>
+                    <li><a href="#javaScript-preguntas">JavaScript</a></li>
                     <li><a href="#material-design">Material Design</a></li>
                     <li><a href="#formulario">Contacto</a></li>
                     <li><a href="#referencias">Referencias</a></li>
@@ -25,7 +26,7 @@
         </nav>
         <header class="section center">
             <div class="container">
-                <div class="card z-depth-3">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
                     <div class="card-content">
                         <img src="img/foto.jpg"
                             alt="Foto de Cristhian Viery Maida Suarez"
@@ -40,7 +41,7 @@
         </header>
         <main>
             <section id="sobre-mi" class="container section">
-                <div class="card">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
                     <div class="card-content">
                         <span class="card-title">Sobre Mi</span>
                         <p>
@@ -54,247 +55,406 @@
                     </div>
                 </div>
             </section>
-            <section id="preguntas">
-                <h2>Preguntas</h2>
-                <article>
-                    <h3>¿Cuál es la diferencia entre Internet y la World Wide Web?</h3>
-                    <p>
-                        Internet es una red global de redes interconectadas que permite la comunicacion entre milllones
-                        de dispositivos mediante protocolos como TCP/IP. Es la infraestructura física y lógica que conecta
-                        computadoras en todo el mundo.
-                        La World Wide Web es un servicio que funciona sobre Internet y permite acceder a documentos y recursos
-                        mediante navegadores web usando el protocolo HTTP o HTTPS. La Web es solo uno de los servicios que utiliza 
-                        Internet, junto con el correo electrónico, FTP, entre otros.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Cuáles son las partes de un URL?</h3>
-                    <p>
-                        Un URL (Uniform Resource Locator) es la dirección que permite localizar un recurso en la Web. Está compuesto 
-                        por varias partes: el protocolo, que indica cómo se accederá al recurso (por ejemplo, https); el dominio, 
-                        que identifica el servidor donde se encuentra alojado el recurso; el puerto, que es opcional y especifica el servicio; 
-                        la ruta, que señala la ubicación específica del archivo dentro del servidor; los parámetros, que envían información adicional; 
-                        y el fragmento, que dirige a una sección específica dentro del documento.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
-                    <p>
-                        Los métodos HTTP definen el tipo de acción que se desea realizar sobre un recurso en un servidor. El método GET se utiliza para solicitar 
-                        información; HEAD obtiene únicamente los encabezados de la respuesta; POST se emplea para enviar datos al servidor, generalmente para crear 
-                        un recurso; PUT reemplaza completamente un recurso existente; PATCH modifica parcialmente un recurso; y DELETE elimina un recurso del servidor. 
-                        Estos métodos permiten que la comunicación entre cliente y servidor sea estructurada y organizada.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h3>
-                    <p>
-                        Cuando se envía un formulario que contiene usuario y contraseña, se debe utilizar el método POST. Esto se debe a que los datos se envían en el 
-                        cuerpo de la solicitud y no aparecen visibles en la URL, lo que reduce la exposición de información sensible. Además, los datos enviados por POST 
-                        no quedan almacenados directamente en el historial del navegador, lo que ofrece mayor seguridad en comparación con el método GET.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h3>
-                    <p>
-                        Cuando un usuario escribe una dirección en el navegador y accede a una página web, el navegador utiliza el método 
-                        GET para solicitar el recurso al servidor. Este método es el estándar para recuperar información sin modificar los 
-                        datos almacenados en el servidor.
-                    </p>
-                </article>
-                <article>
-                    <h3>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h3>
-                    <p>
-                        El código HTTP 200 indica que la solicitud realizada por el cliente fue procesada correctamente por el servidor y 
-                        que el recurso solicitado fue entregado exitosamente. Este código no representa ningún error, sino que confirma que 
-                        la comunicación fue exitosa.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</h3>
-                    <p>
-                        El error 404 indica que el recurso solicitado no fue encontrado en el servidor. Si este error se debe a un enlace interno mal configurado, a una ruta 
-                        incorrecta o a un recurso eliminado sin redirección adecuada, es responsabilidad del desarrollador corregirlo. Esto es importante porque los errores 404 
-                        afectan la experiencia del usuario y pueden perjudicar la credibilidad del sitio web.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</h3>
-                    <p>
-                        El error 500 indica un problema interno en el servidor, generalmente relacionado con errores en el código del backend, configuraciones incorrectas o fallos 
-                        en la base de datos. En la mayoría de los casos, sí es responsabilidad del desarrollador o del administrador del sistema corregirlo, ya que se trata de un 
-                        problema técnico que impide el correcto funcionamiento del sitio.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h3>
-                    <p>
-                        Cuando un elemento o atributo HTML está marcado como deprecated significa que ya no se recomienda su uso en versiones actuales del estándar, debido a que 
-                        ha sido reemplazado por alternativas más modernas y eficientes. En HTML5, varias etiquetas de HTML4 quedaron desaprobadas, como &lt;font&gt;, &lt;center&gt;, 
-                        &lt;big&gt;, &lt;strike&gt; y &lt;frame&gt;. En lugar de estas etiquetas, se recomienda utilizar CSS para controlar la presentación y el diseño.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h3>
-                    <p>
-                         HTML5 introduce etiquetas semánticas como header, nav, section, article y footer, que mejoran la estructura del documento. También incorpora soporte nativo 
-                         para audio y video, nuevos tipos de campos en formularios y una declaración DOCTYPE simplificada, lo que facilita el desarrollo de aplicaciones web modernas.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué componentes de estructura y estilo tiene una tabla?</h3>
-                    <p>
-                        Una tabla en HTML se compone de los elementos table, thead, tbody, tr, th y td. La estructura organiza los datos en filas y columnas, mientras que el estilo 
-                        visual se controla mediante CSS para definir bordes, colores y alineación.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Cuáles son los principales controles de una forma HTML5?</h3>
-                    <p>
-                        Los principales controles incluyen input en sus diferentes tipos como text, email, password, number y date; textarea para texto extenso; select para listas desplegables; 
-                        y button para enviar datos. Estos controles permiten una mejor validación y experiencia de usuario.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h3>
-                    <p>
-                        El navegador Safari en macOS presenta un alto nivel de soporte para las características de HTML5, incluyendo multimedia, almacenamiento local y formularios avanzados. 
-                        Según herramientas como html5test.com, Safari ofrece compatibilidad sólida con los estándares actuales, lo que permite desarrollar aplicaciones web modernas con buen 
-                        rendimiento y compatibilidad.
-                    </p>
-                </article>
+            <section id="preguntas" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Preguntas HTML
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Cuál es la diferencia entre Internet y la World Wide Web?</span>
+                            <p>
+                                Internet es una red global de redes interconectadas que permite la comunicacion entre millones
+                                de dispositivos mediante protocolos como TCP/IP. Es la infraestructura física y lógica que conecta
+                                computadoras en todo el mundo. La World Wide Web es un servicio que funciona sobre Internet y permite acceder
+                                a documentos y recursos mediante navegadores web usando el protocolo HTTP o HTTPS. La Web es solo uno de los servicios
+                                que utiliza Internet, junto con el correo electrónico, FTP, entre otros.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Cuáles son las partes de un URL?</span>
+                                <p>
+                                    Un URL (Uniform Resource Locator) es la dirección que permite localizar un recurso en la Web. Está compuesto 
+                                    por varias partes: el protocolo, que indica cómo se accederá al recurso (por ejemplo, https); el dominio, 
+                                    que identifica el servidor donde se encuentra alojado el recurso; el puerto, que es opcional y especifica el servicio; 
+                                    la ruta, que señala la ubicación específica del archivo dentro del servidor; los parámetros, que envían información adicional; 
+                                    y el fragmento, que dirige a una sección específica dentro del documento.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</span>
+                                <p>
+                                Los métodos HTTP definen el tipo de acción que se desea realizar sobre un recurso en un servidor. El método GET se utiliza para solicitar 
+                                información; HEAD obtiene únicamente los encabezados de la respuesta; POST se emplea para enviar datos al servidor, generalmente para crear 
+                                un recurso; PUT reemplaza completamente un recurso existente; PATCH modifica parcialmente un recurso; y DELETE elimina un recurso del servidor. 
+                                Estos métodos permiten que la comunicación entre cliente y servidor sea estructurada y organizada.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                      <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</span>
+                                <p>
+                                Cuando se envía un formulario que contiene usuario y contraseña, se debe utilizar el método POST. Esto se debe a que los datos se envían en el 
+                                cuerpo de la solicitud y no aparecen visibles en la URL, lo que reduce la exposición de información sensible. Además, los datos enviados por POST 
+                                no quedan almacenados directamente en el historial del navegador, lo que ofrece mayor seguridad en comparación con el método GET.
+                                </p>
+                        </div>
+                    </div>
+                 </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</span>
+                                <p>
+                                    Cuando un usuario escribe una dirección en el navegador y accede a una página web, el navegador utiliza el método 
+                                    GET para solicitar el recurso al servidor. Este método es el estándar para recuperar información sin modificar los 
+                                    datos almacenados en el servidor.
+                                </p>
+                        </div>
+                    </div>
+                 </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</span>
+                                <p>
+                                    El código HTTP 200 indica que la solicitud realizada por el cliente fue procesada correctamente por el servidor y 
+                                    que el recurso solicitado fue entregado exitosamente. Este código no representa ningún error, sino que confirma que 
+                                    la comunicación fue exitosa.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</span>
+                                <p>
+                                El error 404 indica que el recurso solicitado no fue encontrado en el servidor. Si este error se debe a un enlace interno mal configurado, a una ruta 
+                                incorrecta o a un recurso eliminado sin redirección adecuada, es responsabilidad del desarrollador corregirlo. Esto es importante porque los errores 404 
+                                afectan la experiencia del usuario y pueden perjudicar la credibilidad del sitio web.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</span>
+                                <p>
+                                El error 500 indica un problema interno en el servidor, generalmente relacionado con errores en el código del backend, configuraciones incorrectas o fallos 
+                                en la base de datos. En la mayoría de los casos, sí es responsabilidad del desarrollador o del administrador del sistema corregirlo, ya que se trata de un 
+                                problema técnico que impide el correcto funcionamiento del sitio.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</span>
+                                <p>
+                                Cuando un elemento o atributo HTML está marcado como deprecated significa que ya no se recomienda su uso en versiones actuales del estándar, debido a que 
+                                ha sido reemplazado por alternativas más modernas y eficientes. En HTML5, varias etiquetas de HTML4 quedaron desaprobadas, como &lt;font&gt;, &lt;center&gt;, 
+                                &lt;big&gt;, &lt;strike&gt; y &lt;frame&gt;. En lugar de estas etiquetas, se recomienda utilizar CSS para controlar la presentación y el diseño.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</span>
+                                <p>
+                                HTML5 introduce etiquetas semánticas como header, nav, section, article y footer, que mejoran la estructura del documento. También incorpora soporte nativo 
+                                para audio y video, nuevos tipos de campos en formularios y una declaración DOCTYPE simplificada, lo que facilita el desarrollo de aplicaciones web modernas.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Qué componentes de estructura y estilo tiene una tabla?</span>
+                                <p>
+                                Una tabla en HTML se compone de los elementos table, thead, tbody, tr, th y td. La estructura organiza los datos en filas y columnas, mientras que el estilo 
+                                visual se controla mediante CSS para definir bordes, colores y alineación.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Cuáles son los principales controles de una forma HTML5?</span>
+                                <p>
+                                Los principales controles incluyen input en sus diferentes tipos como text, email, password, number y date; textarea para texto extenso; select para listas desplegables; 
+                                y button para enviar datos. Estos controles permiten una mejor validación y experiencia de usuario.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                            <span class="card-title">¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</span>
+                                <p>
+                                El navegador Safari en macOS presenta un alto nivel de soporte para las características de HTML5, incluyendo multimedia, almacenamiento local y formularios avanzados. 
+                                Según herramientas como html5test.com, Safari ofrece compatibilidad sólida con los estándares actuales, lo que permite desarrollar aplicaciones web modernas con buen 
+                                rendimiento y compatibilidad.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </section>
-            <section id="sistemas">
-                <h2>Sobre el ciclo de vida y desarrollo de los sistemas de información</h2>
-                <article>
-                    <h3>¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+            <section id="sistemas" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Ciclo de Vida de los Sistemas
+                </h4>
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                    <span class="card-title">¿Cuál es el ciclo de vida de los sistemas de información?</span>
                     <p>
                         El ciclo de vida de los sistemas de información describe las etapas generales por las que pasa un sistema desde su concepción hasta su retiro. Estas etapas incluyen 
                         planeación, análisis, diseño, implementación, operación y mantenimiento. Cada fase cumple una función específica para garantizar que el sistema cumpla con los objetivos 
                         organizacionales y se mantenga funcional a lo largo del tiempo.
                     </p>
-                </article>
-                <article>
-                    <h3>¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+                </div>
+            </div>
+           <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                <div class="card-content">
+                    <span class="card-title">¿Cuál es el ciclo de desarrollo de sistemas de información?</span>
                     <p>
-                        El ciclo de desarrollo de sistemas, también conocido como SDLC, se enfoca específicamente en el proceso técnico de creación del software. Incluye la recolección de 
+                        EEl ciclo de desarrollo de sistemas, también conocido como SDLC, se enfoca específicamente en el proceso técnico de creación del software. Incluye la recolección de 
                         requisitos, análisis, diseño, programación, pruebas, implementación y mantenimiento. Este ciclo permite estructurar el desarrollo del sistema de manera organizada, 
                         asegurando calidad, eficiencia y reducción de errores.
                     </p>
-                </article>
+                </div>
+            </div>
             </section>
-            <section id="css-preguntas">
-                <h2>Preguntas Laboratorio 03</h2>
-                <article>
-                    <h3>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h3>
-                    <p>
-                        Como ingeniero de software, mi recomendación es evitar el uso de !important en la mayoría de los 
-                        casos, ya que rompe la jerarquía natural de especificidad del CSS y dificulta el mantenimiento del 
-                        código. Cuando se utiliza con frecuencia, puede generar conflictos entre estilos y hacer que el diseño 
-                        sea difícil de depurar y escalar. En lugar de usar !important, es preferible estructurar correctamente los 
-                        selectores y aprovechar la especificidad y el orden natural del CSS. Solo debería emplearse en situaciones 
-                        muy específicas y justificadas.
-                    </p>
-                </article>
-                <article>
-                    <h3>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h3>
-                    <p>
-                        Una imagen de fondo debe escogerse con cuidado porque influye directamente en la legibilidad 
-                        del contenido y en el rendimiento del sitio web. Si la imagen tiene demasiado contraste o 
-                        colores muy fuertes, puede dificultar la lectura del texto. Además, si el archivo es demasiado 
-                        pesado, aumentará el tiempo de carga de la página, afectando la experiencia del usuario. Por estas 
-                        razones, es importante elegir imágenes optimizadas, de tamaño adecuado y que mantengan una buena 
-                        armonía visual con el contenido.
-                    </p>
-                </article>
-                <article>
-                    <h3>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</h3>
-                    <p>
-                        Mi recomendación es priorizar el uso de unidades relativas como el porcentaje (%) cuando se busca un diseño adaptable o 
-                        responsivo, ya que permiten que los elementos se ajusten al tamaño de la pantalla. Los píxeles (px) son útiles cuando 
-                        se requiere precisión exacta en tamaños específicos. Por otro lado, los puntos (pt) se utilizan principalmente en 
-                        contextos de impresión y no son recomendables para diseño web moderno. Elegir correctamente las unidades mejora la 
-                        adaptabilidad, accesibilidad y mantenimiento del sitio.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h3>
-                    <p>
-                        El uso de una versión minimizada del CSS mejora el rendimiento porque reduce el tamaño del archivo eliminando 
-                        espacios innecesarios, saltos de línea y comentarios. Esto disminuye la cantidad de datos que el navegador 
-                        debe descargar, lo que acelera el tiempo de carga de la página. En sitios web con muchos usuarios o múltiples 
-                        archivos de estilo, esta optimización puede generar una mejora significativa en la velocidad y eficiencia del sitio.
-                    </p>
-                </article>
+            <section id="css-preguntas" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Preguntas Laboratorio 03
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?
+                                </span>
+                                <p>
+                                    Como ingeniero de software, mi recomendación es evitar el uso de !important en la mayoría de los 
+                                    casos, ya que rompe la jerarquía natural de especificidad del CSS y dificulta el mantenimiento del 
+                                    código. Cuando se utiliza con frecuencia, puede generar conflictos entre estilos y hacer que el diseño 
+                                    sea difícil de depurar y escalar. En lugar de usar !important, es preferible estructurar correctamente los 
+                                    selectores y aprovechar la especificidad y el orden natural del CSS. Solo debería emplearse en situaciones 
+                                    muy específicas y justificadas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?
+                                </span>
+                                <p>
+                                    Una imagen de fondo debe escogerse con cuidado porque influye directamente en la legibilidad 
+                                    del contenido y en el rendimiento del sitio web. Si la imagen tiene demasiado contraste o 
+                                    colores muy fuertes, puede dificultar la lectura del texto. Además, si el archivo es demasiado 
+                                    pesado, aumentará el tiempo de carga de la página, afectando la experiencia del usuario. Por estas 
+                                    razones, es importante elegir imágenes optimizadas, de tamaño adecuado y que mantengan una buena 
+                                    armonía visual con el contenido.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de una propiedad de estilo entre %, px y pt?
+                                </span>
+                                <p>
+                                    Mi recomendación es priorizar el uso de unidades relativas como el porcentaje (%) cuando se busca un diseño adaptable o 
+                                    responsivo, ya que permiten que los elementos se ajusten al tamaño de la pantalla. Los píxeles (px) son útiles cuando 
+                                    se requiere precisión exacta en tamaños específicos. Por otro lado, los puntos (pt) se utilizan principalmente en 
+                                    contextos de impresión y no son recomendables para diseño web moderno. Elegir correctamente las unidades mejora la 
+                                    adaptabilidad, accesibilidad y mantenimiento del sitio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    ¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?
+                                </span>
+                                <p>
+                                    El uso de una versión minimizada del CSS mejora el rendimiento porque reduce el tamaño del archivo eliminando 
+                                    espacios innecesarios, saltos de línea y comentarios. Esto disminuye la cantidad de datos que el navegador 
+                                    debe descargar, lo que acelera el tiempo de carga de la página. En sitios web con muchos usuarios o múltiples 
+                                    archivos de estilo, esta optimización puede generar una mejora significativa en la velocidad y eficiencia del sitio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section id="javaScript-preguntas">
-                <h2>Preguntas de Fundamentos de JavaScript</h2>
-                <article>
-                    <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
-                    <p>
-                        Java y JavaScript son lenguajes distintos aunque comparten algunas similitudes sintacticas. 
-                        Java es un lenguaje compilado, fuertemente tipado y orientado a objetos, 
-                        que se ejecuta en la maquina virtualJava (JVM). En cambio, JavaScript es un lenguaje interpretado, 
-                        dinamico y multiparadigma que se ejecuta principalmente en navegadores web. 
-                        Mientras Java requiere declarar tipos de datos, JavaScript utiliza tipado dinamico. 
-                        Ambos comparten estructuras como ciclos y condicionales.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué métodos tiene el objeto Date?</h3>
-                    <p>
-                        El objeto Date permite manipular fechas y tiempos en JavaScript. Algunos de sus metodos principales son getFullYear(), getMonth(),
-                        getDate(), getHours(), getMinutes() y getSeconds(). Estos metodos permiten obtener informacion especifica de una fecha determinada.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué métodos tienen los arreglos?</h3>
-                    <p>
-                        Los arreglos en JavaScript poseen numerosos métodos que facilitan la manipulación de datos. 
-                        Entre los más comunes se encuentran push(), que agrega un elemento al final del arreglo; pop(), 
-                        que elimina el último elemento; shift(), que elimina el primer elemento; unshift(), 
-                        que agrega un elemento al inicio; slice(), que devuelve una copia parcial del arreglo; splice(), 
-                        que permite agregar o eliminar elementos en posiciones específicas; map(), 
-                        que crea un nuevo arreglo aplicando una función a cada elemento; y filter(), 
-                        que genera un arreglo con elementos que cumplen cierta condición.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
-                    <p>
-                        Una variable con alcance local en JavaScript se declara utilizando las palabras clave let o const dentro de una función. 
-                        Estas variables solo pueden ser accedidas dentro del bloque o función donde fueron definidas. 
-                        El uso de let y const mejora el control del alcance y evita problemas asociados con variables globales, 
-                        promoviendo una mejor organización y seguridad del código.
-                    </p>
-                </article>
-                <article>
-                    <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
-                    <p>
-                        El uso de variables globales puede generar conflictos de nombres, 
-                        dificultad en el mantenimiento del código y comportamientos inesperados, 
-                        ya que cualquier parte del programa puede modificarlas. 
-                        Esto aumenta el riesgo de errores difíciles de detectar y afecta la modularidad del sistema. 
-                        Desde una perspectiva de ingeniería de software, se recomienda limitar el uso de variables globales 
-                        y preferir variables locales para mejorar la encapsulación y la seguridad del programa.
-                    </p>
-                </article>
+            <section id="javaScript-preguntas" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Preguntas de Fundamentos de JavaScript
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    ¿Qué diferencias y semejanzas hay entre Java y JavaScript?
+                                </span>
+                                <p>
+                                    Java y JavaScript son lenguajes distintos aunque comparten algunas similitudes sintacticas. 
+                                    Java es un lenguaje compilado, fuertemente tipado y orientado a objetos, 
+                                    que se ejecuta en la maquina virtual Java (JVM). En cambio, JavaScript es un lenguaje interpretado, 
+                                    dinamico y multiparadigma que se ejecuta principalmente en navegadores web. 
+                                    Mientras Java requiere declarar tipos de datos, JavaScript utiliza tipado dinamico. 
+                                    Ambos comparten estructuras como ciclos y condicionales.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">¿Qué métodos tiene el objeto Date?</span>
+                                <p>
+                                    El objeto Date permite manipular fechas y tiempos en JavaScript. Algunos de sus metodos principales son getFullYear(), getMonth(),
+                                    getDate(), getHours(), getMinutes() y getSeconds(). Estos metodos permiten obtener informacion especifica de una fecha determinada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                       <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">¿Qué métodos tienen los arreglos?</span>
+                                <p>
+                                    Los arreglos en JavaScript poseen numerosos métodos que facilitan la manipulación de datos. 
+                                    Entre los más comunes se encuentran push(), que agrega un elemento al final del arreglo; pop(), 
+                                    que elimina el último elemento; shift(), que elimina el primer elemento; unshift(), 
+                                    que agrega un elemento al inicio; slice(), que devuelve una copia parcial del arreglo; splice(), 
+                                    que permite agregar o eliminar elementos en posiciones específicas; map(), 
+                                    que crea un nuevo arreglo aplicando una función a cada elemento; y filter(), 
+                                    que genera un arreglo con elementos que cumplen cierta condición.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    ¿Cómo se declara una variable con alcance local dentro de una función?
+                                </span>
+                                <p>
+                                    Una variable con alcance local en JavaScript se declara utilizando las palabras clave let o const dentro de una función. 
+                                    Estas variables solo pueden ser accedidas dentro del bloque o función donde fueron definidas. 
+                                    El uso de let y const mejora el control del alcance y evita problemas asociados con variables globales, 
+                                    promoviendo una mejor organización y seguridad del código.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    ¿Qué implicaciones tiene utilizar variables globales dentro de funciones?
+                                </span>
+                                <p>
+                                    El uso de variables globales puede generar conflictos de nombres, 
+                                    dificultad en el mantenimiento del código y comportamientos inesperados, 
+                                    ya que cualquier parte del programa puede modificarlas. 
+                                    Esto aumenta el riesgo de errores difíciles de detectar y afecta la modularidad del sistema. 
+                                    Desde una perspectiva de ingeniería de software, se recomienda limitar el uso de variables globales 
+                                    y preferir variables locales para mejorar la encapsulación y la seguridad del programa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section id="formulario">
-                <h2>Formulario de Contacto</h2>
-                <form action="#" method="post">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" required>
-                    <label for="correo">Correo</label>
-                    <input type="email" id="correo" required>
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje"></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
+            <section id="material-design" class="container section">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">¿Qué es Material Design?</span>
+                        <p>
+                            Material Design es un sistema de diseño desarrollado por Google que establece
+                            principios, componentes y guías visuales para la creación de interfaces digitales.
+                            Se basa en metáforas visuales inspiradas en el mundo físico, como sombras,
+                            profundidad y movimiento, con el objetivo de generar experiencias intuitivas,
+                            consistentes y accesibles. Material Design promueve el uso de animaciones suaves,
+                            tipografía clara, jerarquía visual y diseño adaptable (responsive) para garantizar
+                            una experiencia coherente en diferentes dispositivos y plataformas.
+                        </p>
+                    </div>
+                </div>
             </section>
-            <section id="referencias">
-                <h2>Referencias</h2>
-                <article>
+            <section id="formulario" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Formulario de Contacto
+                </h4>
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <form>
+                            <div class="input-field">
+                                <input id="nombre" type="text" required>
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="correo" type="email" required>
+                                <label for="correo">Correo</label>
+                            </div>
+                            <div class="input-field">
+                                <textarea id="mensaje" class="materialize-textarea"></textarea>
+                                <label for="mensaje">Mensaje</label>
+                            </div>
+                            <button class="btn blue darken-3 waves-effect waves-light" type="submit">
+                                Enviar
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section id="referencias" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Referencias
+                </h4>
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
                         <p>
                             Berners-Lee, T. (1999). <em>Weaving the Web: The original design and ultimate destiny of the World Wide Web</em>. HarperCollins.
                             https://www.w3.org/People/Berners-Lee/Weaving/
@@ -356,28 +516,69 @@
                             <em>let</em>.
                             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
                         </p>
-                </article>
+                        <p>
+                            Google. (s.f.). <em>Material Design</em>. Material Design.
+                            https://m3.material.io/
+                        </p>
+
+                    </div>
+                </div>
             </section>
-            <section id="test01"></section>
-            <section id="test02"></section>
-            <section id="test03"></section>
-            <section id="test04"></section>
-            <section id="test05"></section>
-            <section id="test06">
-                <h2>Ejercicio 6 - Evaluacion de Modelo de IA</h2>
-                <p>
-                    Se implementa un objeto que representa un modelo de Inteligencia
-                    Artificial. El modelo almacena la cantidad de predicciones correctas
-                    y el total de predicciones realizadas. El sistema permite calcular
-                    la precision del modelo y agregar nuevas predicciones.
-                </p>
+            <section class="container section">
+                <h4 class="center deep-purple-text text-darken-2">
+                    <i class="material-icons left">analytics</i>
+                    Resultados de JavaScript
+                </h4>
+                <div class="row">
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test01" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test02" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test03" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test04" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test05" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m10 offset-m1">
+                        <div id="test06" class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content"></div>
+                            <span class="card-title">Ejercicio 6 - Evaluacion de Modelo de IA</span>
+                            <p>
+                                Se implementa un objeto que representa un modelo de Inteligencia
+                                Artificial. El modelo almacena la cantidad de predicciones correctas
+                                y el total de predicciones realizadas. El sistema permite calcular
+                                la precision del modelo y agregar nuevas predicciones.
+                            </p>
+                        </div>
+                    </div>
             </section>
         </main>
-        <footer>
-            <p>Editor utilizado: Visual Studio Code</p>
-            <p><a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+        <footer class="page-footer blue darken-3">
+            <div class="container center">
+                Editor utilizado: Visual Studio Code
+                <br>
+                <a class="white-text" href="https://code.visualstudio.com/" target="_blank">
+                    https://code.visualstudio.com/
+                </a>
+            </div>
         </footer>
-        <script src="intro.js"></script>
+        <script src="intro2.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 </html>
