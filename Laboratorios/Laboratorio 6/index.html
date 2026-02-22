@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laboratorio 6</title>
+        <link rel="stylecheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="mainTitle">Aegis Account </h1>
+            <p class="subtitle">Crea tu perfil seguro</p>
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password">
+                    <div id="passwordHelp" class="help-text">
+                        Tu Contraseña debe contener al menos 8 caracteres, una mayuscula,
+                        un numero y un caracter especial.
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="confirmarPassword">Confirmar Contraseña</label>
+                    <input type="password" id="confirmarPassword" name="confirmarPassword">
+                    <div id="matchMessage"></div>
+                </div>
+                <div class="requirements">
+                    <p id="lengthReq">• Al menos 8 caracteres</p>
+                    <p id="upperReq">• Al menos una letra mayuscula</p>
+                    <p id="numberReq">• Al menos un numero</p>
+                    <p id="specialReq">• Al menos un caracter especial</p>
+                </div>
+                <div class="strength-container">
+                    <div id="strengthBar"></div>
+                </div>
+                <div id="finalMessage"></div>
+                <button type=""
+            </form>
+        </div>
+    
+    </body>
+</html>
