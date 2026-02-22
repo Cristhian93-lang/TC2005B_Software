@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Laboratorio 6</title>
-        <link rel="stylecheet" href="style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
-            <h1 id="mainTitle">Aegis Account </h1>
+            <h1 id="mainTitle">Aegis Account</h1>
             <p class="subtitle">Crea tu perfil seguro</p>
             <form id="registerForm">
                 <div class="input-group">
@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="confirmarPassword">Confirmar Contraseña</label>
-                    <input type="password" id="confirmarPassword" name="confirmarPassword">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
                     <div id="matchMessage"></div>
                 </div>
                 <div class="requirements">
@@ -36,6 +36,63 @@
                 <div id="finalMessage"></div>
                 <button type="submit">Crear Cuenta</button>
             </form>
+            <section class="lab-questions">
+                <h2> Lab 6 - Preguntas a responder</h2>
+                <h3>
+                    1) ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos 
+                    los inputs de las formas antes de enviar los datos al servidor?
+                </h3>
+                <p>
+                    Porque mejora la experiencia del usuario: permite detectar
+                    errores de inmediato (sin recargar la pagina), reduce intentos
+                    fallidos y evita enviar solicitudes innecesarias al servidor.
+                    Tambien ayuda a filtrar errores comunes desde el cliente,
+                    aunque la validacion real debe repetirse en el servidor.
+                </p>
+                <h3>2) ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h3>
+                <p>
+                    Se puede desactivar JavaScript en el navegador, modificar el
+                    codigo desde las DevTools, alterar el HTML (por ejemplo quitar
+                    restricciones), o enviar la solicitud directamente sin usar la
+                    pagina (ej. con Postman, curl o un script). Por eso la
+                    validacion en cliente no es una medida de seguridad completa.
+                </p>
+                <h3>
+                    3) Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces 
+                    ¿por qué la primera pregunta dice que es una buena práctica?
+                </h3>
+                <p>
+                    Porque es buena practica por UX y eficiencia, no por seguridad.
+                    JavaScript sirve para dar retroalimentacion rapida y evitar
+                    cargas innecesarias, pero la seguridad se garantiza validando
+                    tambien en el servidor. Lo correcto es validar en ambos lados:
+                    cliente para mejorar la experiencia y servidor para proteger el
+                    sistema y los datos.
+                </p>
+                <h2>Fuentes Consultadas</h2>
+                <ul class ="apa-list">
+                    <li>
+                        W3Schools. (s. f.). <em>HTML DOM EventListener</em>.
+                        https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>CSS position Property</em>.
+                        https://www.w3schools.com/cssref/pr_class_position.asp
+                    </li>
+                    <li>
+                         W3Schools. (s. f.). <em>CSS top Property</em>.
+                         https://www.w3schools.com/cssref/pr_pos_top.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>CSS visibility Property</em>.
+                        https://www.w3schools.com/cssref/pr_class_visibility.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>JavaScript setTimeout() Method</em>.
+                        https://www.w3schools.com/jsref/met_win_settimeout.asp
+                    </li>
+                </ul>
+            </section>
         </div>
         <script src="script.js"></script>
     

@@ -10,10 +10,14 @@ const finalMessage = document.getElementById("finalMessage");
 const helpText = document.getElementById("passwordHelp");
 const title = document.getElementById("mainTitle");
 const form = document.getElementById("registerForm");
+let passwordStrength = 0;
 
 passwordInput.addEventListener("input", validatePassword);
 confirmInput.addEventListener("input", checkMatch);
 passwordInput.addEventListener("focus", function() {
+    helpText.style.position = "absolute";
+    helpText.style.top = "6em";
+    helpText.style.left = "7.5%";
     helpText.style.visibility = "visible";
 });
 
@@ -26,42 +30,42 @@ title.addEventListener("mouseover", function() {
     title.style.fontStyle = "italic";
 });
 
-title.addEventListener("mouseover", function() {
+title.addEventListener("mouseout", function() {
     title.style.color = "white";
     title.style.fontStyle = "normal";
 });
 
 function validatePassword() {
     const value = passwordInput.value;
-    let strength = 0;
+    passwordStrength = 0;
     if (value.length >= 8) {
         lengthReq.style.color = "lime";
-        strength++;
+        passwordStrength++;
     } else {
         lengthReq.style.color = "#ff6b6b";
     }
 
     if (/[A-Z]/.test(value)) {
         upperReq.style.color = "lime";
-        strength++;
+        passwordStrength++;
     } else {
         upperReq.style.color = "#ff6b6b";
     }
 
     if (/[0-9]/.test(value)) {
         numberReq.style.color = "lime";
-        strength++;
+        passwordStrength++;
     } else {
         numberReq.style.color = "#ff6b6b";
     }
 
     if (/[^A-Za-z0-9]/.test(value)) {
         specialReq.style.color = "lime";
-        strength++;
+        passwordStrength++;
     } else {
         specialReq.style.color = "#ff6b6b"
     }
-    updateStrengthBar(strength);
+    updateStrengthBar(passwordStrength);
 }
 
 function updateStrengthBar(level) {
@@ -72,10 +76,12 @@ function updateStrengthBar(level) {
     } else if (level === 2) {
         strengthBar.style.background = "orange";
     } else if (level === 3) {
+        strengthBar.style.background = "yellowgreen";
+    } else if (level === 4) {
         strengthBar.style.background = "lime";
         showStrongMessage();
     } else {
-        strengthBar.style.background = "transparent";
+        strengthBar.style.background = "transparent"
     }
 }
 
@@ -93,7 +99,7 @@ function checkMatch() {
         return;
     }
     if (confirmInput.value === passwordInput.value) {
-        matchMessage.textContent = " Las contraseñas coinciden";
+        matchMessage.textContent = "Las contraseñas coinciden";
         matchMessage.style.color = "lime";
     } else {
         matchMessage.textContent = "Las contraseñas no coinciden";
@@ -103,9 +109,24 @@ function checkMatch() {
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    if (strengthBar.style.width === "100%" && confirmInput.value === passwordInput) {
-        finalMessage.textContent = "Cuenta creada exitosamente";
-        finalMessage.style.color = "lime";    
+
+    if (passwordStrength === 4 &&
+        confirmInput.value === passwordInput.value &&
+        confirmInput.value !== "") {
+        title.textContent = "Bienvenido a Aegis Account";
+        title.style.color = "#00ffcc";
+        title.style.transition = "all 0.5s ease";
+        title.style.transform = "scale(1.15)";
+        title.style.letterSpacing = "0.05em";
+        title.style.opacity = "0";
+        setTimeout(function() {
+            title.style.opacity = "1";
+        }, 50);
+        form.style.transition = "opacity 0.6s ease";
+        form.style.opacity = "0";
+        setTimeout(function() {
+            form.style.display = "none";
+        }, 600);
     } else {
         finalMessage.textContent = "Por favor cumple todos los requisitos";
         finalMessage.style.color = "red";

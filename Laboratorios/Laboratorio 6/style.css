@@ -6,11 +6,12 @@
 }
 
 body {
-    height: 100vh;
-    background:linear-gradient (135deg, #1e3c72, #2a5298, #6a11cb);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #6a11cb);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 2em 0;
     color: white;
     font-size: 1em;
 }
@@ -19,7 +20,8 @@ body {
     background: rgba(0, 0, 0, 0.75);
     padding: 2.5em;
     border-radius: 1em;
-    width: 25em;
+    width: 35em;
+    max-width: 95%; 
     box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.6);
     text-align: center;
     position: relative;
@@ -27,7 +29,7 @@ body {
 
 h1 {
     margin-bottom: 0.6em;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
 }
 
 .subtitle {
@@ -36,7 +38,7 @@ h1 {
     opacity: 0.8;
 }
 
-input-group {
+.input-group {
     margin-bottom: 1.5em;
     text-align: left;
 }
@@ -70,10 +72,10 @@ input {
 }
 
 .requirements {
+    text-align: left;
     font-size: 0.8em;
     margin: 0.3em 0;
     color: #ff6b6b;
-    transition: color 0.3s ease;
 }
 
 .strength-container {
@@ -100,7 +102,8 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
-    font-size: 0.9em;
+    font-size: 1em;
+    margin-top: 1em;
 }
 
 button:hover {
@@ -115,4 +118,43 @@ button:hover {
 #finalMessage {
     margin-top: 0.8em;
     font-weight: bold;
+}
+
+.apa-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1em;
+}
+
+
+.apa-list li{
+    margin-bottom: 1em;
+    text-indent: -1em;
+    padding-left: 1em;
+    line-height: 1.5em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.lab-questions {
+    text-align: justify;
+    margin-top: 3em;
+}
+
+.lab-questions h2 {
+    text-align: left;
+    margin-bottom: 1.5em;
+}
+
+.lab-questions h3 {
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+    padding-top: 1em;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.lab-questions p {
+    margin-bottom: 1.5em;
+    line-height: 1.6em;
 }
