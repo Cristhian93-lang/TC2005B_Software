@@ -1,1 +1,1 @@
-Hola, este archivo fue creado con Node.js
+El laboratoio 8 es el que mas practico me parecio en cuanto a programacion js porque hizo que lo captara mejor

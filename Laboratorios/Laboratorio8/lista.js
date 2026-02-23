@@ -21,7 +21,7 @@ class Lista {
         }
     }
 
-    getcurrentSize() {
+    getCurrentSize() {
         return this.currentSize;
     }
 
@@ -31,7 +31,7 @@ class Lista {
             this.data.pop();
             this.currentSize--;
         } else {
-            console.log("NO HAY ELEMNTOS");
+            console.log("NO HAY ELEMENTOS");
         }
     }
 

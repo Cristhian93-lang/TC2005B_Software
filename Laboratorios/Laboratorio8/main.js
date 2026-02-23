@@ -10,7 +10,7 @@ function main() {
 
     console.log("Mi lista:");
     listaInt.print();
-    console.log("Tamaño:", listaInt.getcurrentSize());
+    console.log("Tamaño:", listaInt.getCurrentSize());
     console.log("Posicion en 4:", listaInt.getData(4));
     console.log("Elimina el ultimo dato:");
     listaInt.erase();
