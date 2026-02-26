@@ -17,22 +17,17 @@
         </p>
         <div class="columns">
             <div class="column">
-                Gwen
-                <figure class="image">
-                    <img class="is-rounded" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Gwen_0.jpg" />
-                </figure>
+                <div id="gwen"></div>
             </div>
             <div class="column">
-                Mordkeiser
-                <figure class="image">
-                    <img class="is-rounded" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Mordekaiser_0.jpg" />
-                </figure>
+                <button class="js-modal-trigger" data-target="modal-js-example">
+                    <figure class="image">
+                        <img class="is-rounded" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Mordekaiser_0.jpg" />
+                    </figure>
+                </button>
             </div>
             <div class="column">
-                Jax
-                <figure class="image">
-                    <img class="is-rounded" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jax_0.jpg" />
-                </figure>
+                <div id="jax"></div>
             </div>
             <div class="column">
                 Garen
@@ -69,6 +64,37 @@
         </div>
     </div>
   </section>
+  <section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <ul>
+                    <li>git add -A: Sirve para agregar cambios a una transacción.</li>
+                    <li>
+                        git commit -m "escribir mensaje en imperativo": 
+                        Sirve para confirmar los cambios de una transacción.
+                    </li>
+                    <li>git push: Sirve para sincronizar una rama local con una rama en el repositorio remoto.</li>
+                    <li>git pull: Sirve para obtener los cambios de una rama remota hacia una rama local.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box">
+        <p id="contenido_modal"></p>
+        <!-- Your content -->
+        </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
   <script src="js/lol.js"></script>
   </body>
 </html>
