@@ -108,26 +108,13 @@ function checkMatch() {
 }
 
 form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
     if (passwordStrength === 4 &&
         confirmInput.value === passwordInput.value &&
         confirmInput.value !== "") {
-        title.textContent = "Bienvenido a Aegis Account";
+        title.textContent = "Enviando datos...";
         title.style.color = "#00ffcc";
-        title.style.transition = "all 0.5s ease";
-        title.style.transform = "scale(1.15)";
-        title.style.letterSpacing = "0.05em";
-        title.style.opacity = "0";
-        setTimeout(function() {
-            title.style.opacity = "1";
-        }, 50);
-        form.style.transition = "opacity 0.6s ease";
-        form.style.opacity = "0";
-        setTimeout(function() {
-            form.style.display = "none";
-        }, 600);
     } else {
+        event.preventDefault();
         finalMessage.textContent = "Por favor cumple todos los requisitos";
         finalMessage.style.color = "red";
     }
