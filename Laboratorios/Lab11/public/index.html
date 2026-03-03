@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Laboratorio 6</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="mainTitle">Aegis Account</h1>
+            <p class="subtitle">Crea tu perfil seguro</p>
+            <form id="registerForm" method="POST" action="/usuarios/guardar">
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password">
+                    <div id="passwordHelp" class="help-text">
+                        Tu Contraseña debe contener al menos 8 caracteres, una mayuscula,
+                        un numero y un caracter especial.
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <div id="matchMessage"></div>
+                </div>
+                <div class="requirements">
+                    <p id="lengthReq">• Al menos 8 caracteres</p>
+                    <p id="upperReq">• Al menos una letra mayuscula</p>
+                    <p id="numberReq">• Al menos un numero</p>
+                    <p id="specialReq">• Al menos un caracter especial</p>
+                </div>
+                <div class="strength-container">
+                    <div id="strengthBar"></div>
+                </div>
+                <div id="finalMessage"></div>
+                <button type="submit">Crear Cuenta</button>
+            </form>
+            <section class="lab-questions">
+                <h2> Lab 6 - Preguntas a responder</h2>
+                <h3>
+                    1) ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos 
+                    los inputs de las formas antes de enviar los datos al servidor?
+                </h3>
+                <p>
+                    Porque mejora la experiencia del usuario: permite detectar
+                    errores de inmediato (sin recargar la pagina), reduce intentos
+                    fallidos y evita enviar solicitudes innecesarias al servidor.
+                    Tambien ayuda a filtrar errores comunes desde el cliente,
+                    aunque la validacion real debe repetirse en el servidor.
+                </p>
+                <h3>2) ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h3>
+                <p>
+                    Se puede desactivar JavaScript en el navegador, modificar el
+                    codigo desde las DevTools, alterar el HTML (por ejemplo quitar
+                    restricciones), o enviar la solicitud directamente sin usar la
+                    pagina (ej. con Postman, curl o un script). Por eso la
+                    validacion en cliente no es una medida de seguridad completa.
+                </p>
+                <h3>
+                    3) Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces 
+                    ¿por qué la primera pregunta dice que es una buena práctica?
+                </h3>
+                <p>
+                    Porque es buena practica por UX y eficiencia, no por seguridad.
+                    JavaScript sirve para dar retroalimentacion rapida y evitar
+                    cargas innecesarias, pero la seguridad se garantiza validando
+                    tambien en el servidor. Lo correcto es validar en ambos lados:
+                    cliente para mejorar la experiencia y servidor para proteger el
+                    sistema y los datos.
+                </p>
+                <section class="lab-questions">
+                    <h2>Lab 11 - Preguntas a responder</h2>
+                    <h3>Describe el archivo package.json.</h3>
+                    <p>
+                        El archivo <strong>package.json</strong> es el archivo de configuración
+                        principal de un proyecto en Node.js. Se genera al ejecutar
+                        <code>npm init</code> y contiene información básica como el nombre del
+                        proyecto, la versión y los scripts disponibles para ejecutarlo.
+                    </p>
+                    <p>
+                        Además, registra las dependencias necesarias para que el proyecto
+                        funcione correctamente. En este laboratorio, al instalar Express con
+                        <code>npm install express</code>, se agregó automáticamente en la
+                        sección <code>"dependencies"</code>. Esto permite que cualquier persona
+                        pueda ejecutar <code>npm install</code> y reproducir el entorno del
+                        proyecto fácilmente.
+                    </p>
+                </section>
+                <h2>Fuentes Consultadas</h2>
+                <ul class ="apa-list">
+                    <li>
+                        W3Schools. (s. f.). <em>HTML DOM EventListener</em>.
+                        https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>CSS position Property</em>.
+                        https://www.w3schools.com/cssref/pr_class_position.asp
+                    </li>
+                    <li>
+                         W3Schools. (s. f.). <em>CSS top Property</em>.
+                         https://www.w3schools.com/cssref/pr_pos_top.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>CSS visibility Property</em>.
+                        https://www.w3schools.com/cssref/pr_class_visibility.asp
+                    </li>
+                    <li>
+                        W3Schools. (s. f.). <em>JavaScript setTimeout() Method</em>.
+                        https://www.w3schools.com/jsref/met_win_settimeout.asp
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <script src="script.js"></script>
+    
+    </body>
+</html>

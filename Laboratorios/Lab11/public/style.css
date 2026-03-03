@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #6a11cb);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2em 0;
+    color: white;
+    font-size: 1em;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.75);
+    padding: 2.5em;
+    border-radius: 1em;
+    width: 35em;
+    max-width: 95%; 
+    box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.6);
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 0.6em;
+    transition: all 0.3s ease;
+}
+
+.subtitle {
+    margin-bottom: 2em;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+.input-group {
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+label {
+    font-size: 0.9em;
+}
+
+input {
+    width: 100%;
+    padding: 0.7em;
+    margin-top: 0.4em;
+    border-radius: 0.6em;
+    border: none;
+    outline: none;
+    font-size: 0.9em;
+}
+
+.help-text {
+    font-size: 0.75em;
+    margin-top: 0.5em;
+    visibility: hidden;
+    position: absolute;
+    background: #222;
+    padding: 0.6em;
+    border-radius: 0.6em;
+    width: 85%;
+    left: 7.5%;
+    top: 6em;
+    z-index: 10;
+}
+
+.requirements {
+    text-align: left;
+    font-size: 0.8em;
+    margin: 0.3em 0;
+    color: #ff6b6b;
+}
+
+.strength-container {
+    height: 0.5em;
+    background: #444;
+    border-radius: 1em;
+    margin: 1em 0;
+}
+
+#strengthBar {
+    height: 0.5em;
+    width: 0%;
+    border-radius: 1em;
+    transition: width 0.3s ease;
+}
+
+button {
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    border-radius: 0.6em;
+    background: #00c9ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+button:hover {
+    background: #00a3cc;
+}
+
+#matchMessage {
+    font-size: 0.75em;
+    margin-top: 0.4em;
+}
+
+#finalMessage {
+    margin-top: 0.8em;
+    font-weight: bold;
+}
+
+.apa-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1em;
+}
+
+
+.apa-list li{
+    margin-bottom: 1em;
+    text-indent: -1em;
+    padding-left: 1em;
+    line-height: 1.5em;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.lab-questions {
+    text-align: justify;
+    margin-top: 3em;
+}
+
+.lab-questions h2 {
+    text-align: left;
+    margin-bottom: 1.5em;
+}
+
+.lab-questions h3 {
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+    padding-top: 1em;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.lab-questions p {
+    margin-bottom: 1.5em;
+    line-height: 1.6em;
+}
