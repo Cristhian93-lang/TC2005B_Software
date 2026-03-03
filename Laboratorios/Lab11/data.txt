@@ -1,7 +1,0 @@
-{"nombre":"Cristhian"}
-{"nombre":"Cristhian"}
-{"nombre":"Gerardo"}
-{"nombre":"Laura"}
-{"nombre":"Eduardo"}
-{"nombre":"Luis"}
-{"password":"Luis135790@","confirmPassword":"Luis135790@"}
