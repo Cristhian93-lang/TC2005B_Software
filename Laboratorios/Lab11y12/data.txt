@@ -1,8 +1,7 @@
-{"nombre":"Cristhian"}
-{"nombre":"Cristhian"}
-{"nombre":"Gerardo"}
-{"nombre":"Laura"}
-{"nombre":"Eduardo"}
-{"nombre":"Luis"}
 {"password":"Luis135790@","confirmPassword":"Luis135790@"}
 {"password":"Arliz135790@","confirmPassword":"Arliz135790@"}
+{"password":"Eduardo12345%","confirmPassword":"Eduardo12345%"}
+{"password":"Gerardo12345%","confirmPassword":"Gerardo12345%"}
+{"password":"Laura12345%","confirmPassword":"Laura12345%"}
+{"password":"Ricardo12345%","confirmPassword":"Ricardo12345%"}
+{"password":"Lalo12345%","confirmPassword":"Lalo12345%"}

@@ -9,10 +9,7 @@ router.post('/guardar', (req, res) => {
             if (err) {
                 res.status(500).send('Error al guardar los datos');
             } else {
-                res.send(`
-                    <h1>Cuenta creada correctamente</h1>
-                    <a href="/usuarios">Volver al Inicio</a>
-                    `);
+                res.redirect('/');
             }
         });
 });

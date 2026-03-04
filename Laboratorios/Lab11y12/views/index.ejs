@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laboratorio 6</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+        <%- include('includes/_head', { 
+            title: 'Aegis Account'
+        }) %>
         <div class="container">
             <h1 id="mainTitle">Aegis Account</h1>
             <p class="subtitle">Crea tu perfil seguro</p>
@@ -36,6 +30,22 @@
                 <div id="finalMessage"></div>
                 <button type="submit">Crear Cuenta</button>
             </form>
+            <h2>Usuarios registrados</h2>
+            <% if (usuarios.length > 0) { %>
+                <table border="1">
+                    <tr>
+                        <th>Password</th>
+                    </tr>
+
+                    <% usuarios.forEach(usuario => { %>
+                        <tr>
+                            <td><%= usuario.password %></td>
+                        </tr>
+                    <% }) %>
+                </table>
+            <% } else { %>
+                <p>No hay usuarios registrados aún.</p>
+            <% } %>
             <section class="lab-questions">
                 <h2> Lab 6 - Preguntas a responder</h2>
                 <h3>
@@ -87,6 +97,46 @@
                         proyecto fácilmente.
                     </p>
                 </section>
+                <section class="lab-questions">
+                    <h2>Lab 12 - Preguntas a responder</h2>
+
+                    <h3>¿Qué otros templating engines existen para Node?</h3>
+
+                    <p>
+                        Además de <strong>EJS</strong>, existen otros motores de plantillas que permiten
+                        generar HTML dinámico desde el servidor en aplicaciones desarrolladas con
+                        Node.js.
+                    </p>
+
+                    <p>
+                        Algunos de los más utilizados son:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <strong>Pug</strong>: utiliza una sintaxis basada en indentación y es más
+                            compacta que el HTML tradicional.
+                        </li>
+                        <li>
+                            <strong>Handlebars</strong>: permite crear plantillas reutilizables con
+                            helpers y es muy utilizado en aplicaciones estructuradas.
+                        </li>
+                        <li>
+                            <strong>Mustache</strong>: es un motor de plantillas minimalista que sigue
+                            el principio de “logic-less templates”.
+                        </li>
+                        <li>
+                            <strong>Nunjucks</strong>: está inspirado en Jinja2 (Python) y ofrece
+                            características avanzadas para generar vistas dinámicas.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Todos estos motores cumplen la misma finalidad: separar la lógica del
+                        servidor de la presentación visual, permitiendo construir interfaces
+                        dinámicas de forma más organizada y mantenible.
+                    </p>
+                </section>
                 <h2>Fuentes Consultadas</h2>
                 <ul class ="apa-list">
                     <li>
@@ -112,7 +162,4 @@
                 </ul>
             </section>
         </div>
-        <script src="script.js"></script>
-    
-    </body>
-</html>
+        <%- include('includes/_footer') %>

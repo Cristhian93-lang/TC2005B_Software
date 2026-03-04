@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Aegis Account' %></title>
+
+    <% if (typeof useMaterialize !== 'undefined' && useMaterialize) { %>
+        <!-- Materialize CSS -->
+        <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+        rel="stylesheet">
+    <% } %>
+
+    <% if (typeof css !== 'undefined' && css) { %>
+        <link rel="stylesheet" href="/<%= css %>">
+    <% } else { %>
+        <link rel="stylesheet" href="/style.css">
+    <% } %>
+
+    <link rel="icon" href="/favicon.ico">
+</head>
+<body class="<%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
