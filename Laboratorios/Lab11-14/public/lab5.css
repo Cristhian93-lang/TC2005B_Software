@@ -1,0 +1,27 @@
+.gradient-nav {
+    background: linear-gradient(45deg, #1a237e, #0d47a1);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(2em);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card {
+    border-radius: 1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.5em);
+}
+
+.card-content p {
+    color: #212121;
+}
