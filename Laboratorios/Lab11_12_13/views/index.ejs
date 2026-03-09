@@ -34,14 +34,22 @@
             <% if (usuarios.length > 0) { %>
                 <table border="1">
                     <tr>
-                        <th>Password</th>
+                       <th>Password</th>
+                       <th>Fecha de creación</th>
+                       <th>Acción</th>
                     </tr>
-
-                    <% usuarios.forEach(usuario => { %>
-                        <tr>
-                            <td><%= usuario.password %></td>
-                        </tr>
-                    <% }) %>
+               <% usuarios.forEach(usuario => { %>
+                    <tr>
+                        <td><%= usuario.password %></td>
+                        <td><%= usuario.fecha %></td>
+                        <td>
+                            <form action="/usuarios/eliminar" method="POST">
+                                <input type="hidden" name="password" value="<%= usuario.password %>">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
                 </table>
             <% } else { %>
                 <p>No hay usuarios registrados aún.</p>
@@ -135,6 +143,47 @@
                         Todos estos motores cumplen la misma finalidad: separar la lógica del
                         servidor de la presentación visual, permitiendo construir interfaces
                         dinámicas de forma más organizada y mantenible.
+                    </p>
+                </section>
+                <section class="lab-questions">
+                    <h2>Lab 13 - Preguntas a responder</h2>
+                    <h3>1) ¿Qué beneficios encuentras en el estilo MVC?</h3>
+                    <p>
+                        El estilo arquitectónico <strong>MVC (Modelo-Vista-Controlador)</strong>
+                        permite separar una aplicación en tres componentes principales:
+                        el modelo, la vista y el controlador. Esta separación ayuda a organizar
+                        mejor el código, ya que cada parte tiene una responsabilidad específica.
+                    </p>
+                    <p>
+                        El <strong>modelo</strong> se encarga de manejar los datos y la lógica
+                        relacionada con ellos, la <strong>vista</strong> se encarga de mostrar la
+                        interfaz al usuario, y el <strong>controlador</strong> recibe las
+                        peticiones del cliente y coordina la comunicación entre el modelo
+                        y la vista.
+                    </p>
+                    <p>
+                        Entre sus principales beneficios se encuentran una mayor
+                        <strong>organización del código</strong>, una mejor
+                        <strong>mantenibilidad del sistema</strong> y la posibilidad de
+                        modificar o ampliar la aplicación sin afectar todas sus partes.
+                        Además, facilita el trabajo en equipo porque diferentes
+                        desarrolladores pueden trabajar en distintas capas del sistema.
+                    </p>
+                    <h3>2) ¿Encuentras alguna desventaja en el estilo arquitectónico MVC?</h3>
+                    <p>
+                        Una posible desventaja del patrón MVC es que introduce una
+                        <strong>estructura más compleja</strong> en comparación con
+                        aplicaciones pequeñas o prototipos simples. Implementar MVC
+                        implica crear más archivos y dividir la lógica del programa
+                        en varias capas como modelos, controladores y vistas.
+                    </p>
+                    <p>
+                        Esto puede aumentar la cantidad de código inicial y requerir
+                        una mayor comprensión de la arquitectura del sistema.
+                        Sin embargo, aunque al principio pueda parecer más complejo,
+                        en proyectos medianos o grandes MVC resulta muy útil porque
+                        facilita el mantenimiento, la escalabilidad y la claridad
+                        del código.
                     </p>
                 </section>
                 <h2>Fuentes Consultadas</h2>

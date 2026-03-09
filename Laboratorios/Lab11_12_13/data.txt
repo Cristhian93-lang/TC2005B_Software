@@ -1,7 +1,3 @@
-{"password":"Luis135790@","confirmPassword":"Luis135790@"}
-{"password":"Arliz135790@","confirmPassword":"Arliz135790@"}
-{"password":"Eduardo12345%","confirmPassword":"Eduardo12345%"}
-{"password":"Gerardo12345%","confirmPassword":"Gerardo12345%"}
-{"password":"Laura12345%","confirmPassword":"Laura12345%"}
-{"password":"Ricardo12345%","confirmPassword":"Ricardo12345%"}
-{"password":"Lalo12345%","confirmPassword":"Lalo12345%"}
+{"password":"Bart135790@","fecha":"3/8/2026, 10:16:35 PM"}
+{"password":"Max135790@","fecha":"3/8/2026, 10:17:01 PM"}
+{"password":"Ben135790∞","fecha":"3/8/2026, 10:17:30 PM"}

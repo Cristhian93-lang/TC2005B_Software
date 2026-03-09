@@ -6,8 +6,14 @@ exports.getUsuarios = (req, res) => {
     });
 
 };
+
 exports.addUsuario = (req, res) => {
-    const usuario = new Usuario(req.body.nombre);
+    const usuario = new Usuario(req.body);
     usuario.save();
+    res.redirect('/');
+};
+
+exports.eliminarUsuario = (req, res) => {
+    Usuario.delete(req.body.password);
     res.redirect('/');
 };
