@@ -5,7 +5,7 @@ const infoRoutes = require('./routes/info.routes');
 const usuariosRoutes = require('./routes/usuarios.routes');
 const Usuario = require('./models/usuario.model');
 const session = require('express-session');
-
+const usuariosController = require('./controllers/usuarios.controller');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -20,23 +20,7 @@ app.use(session({
 app.use('/usuarios', usuariosRoutes);
 app.use('/info', infoRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    const usuarios = Usuario.fetchAll();
-    if (!req.session.visitas) {
-        req.session.visitas = 1;
-    } else {
-        req.session.visitas++;
-    }
-    res.render('index', {
-        usuarios: usuarios,
-        usuarioActivo: req.session.usuario,
-        visitas: req.session.visitas,
-        title: 'Aegis Account',
-        css: 'style.css',
-        bodyClass: ''
-    });
-});
+app.get('/', usuariosController.getUsuarios);
 
 app.get('/lab5', (req, res) => {
     res.render('lab5', {
@@ -44,7 +28,6 @@ app.get('/lab5', (req, res) => {
         css: 'lab5.css',
         bodyClass: 'grey lighten-4'
     });
-
 });
 
 app.use((req, res) => {
@@ -52,8 +35,9 @@ app.use((req, res) => {
 });
 
 app.use((error, req, res, next) => {
+    console.error('ERROR EN EL SERVIDOR:');
     console.error(error);
-    res.status(500).send('Error interno del servidor');
+    res.status(500).send(error.message);   
 });
 
 app.listen(3000, () => {

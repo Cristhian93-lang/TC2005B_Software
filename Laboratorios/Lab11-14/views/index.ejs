@@ -42,7 +42,7 @@
                 </button>
             </form>
             <h2>Usuarios registrados</h2>
-            <% if (usuarios.length > 0) { %>
+            <% if (usuarios && usuarios.length > 0) { %>
                 <table border="1">
                     <tr>
                        <th>Password</th>
@@ -131,8 +131,8 @@
                 garantizar la seguridad y la integridad de la información.
                 </p>
 
-                </section>
-                <section class="lab-questions">
+            </section>
+            <section class="lab-questions">
                 <h2>Lab 11 - Preguntas a responder</h2>
                 <h3>Describe el archivo <code>package.json</code>.</h3>
 
@@ -158,8 +158,8 @@
                 entre desarrolladores.
                 </p>
 
-                </section>
-                <section class="lab-questions">
+            </section>
+            <section class="lab-questions">
                 <h2>Lab 12 - Preguntas a responder</h2>
 
                 <h3>¿Qué otros templating engines existen para Node.js?</h3>
@@ -197,8 +197,8 @@
                 estructura visual de la aplicación.
                 </p>
 
-                </section>
-                <section class="lab-questions">
+            </section>
+            <section class="lab-questions">
                 <h2>Lab 13 - Preguntas a responder</h2>
                 <h3>1) ¿Qué beneficios encuentras en el estilo MVC?</h3>
 
@@ -240,7 +240,62 @@
                 mantenimiento, la organización y la escalabilidad de la aplicación.
                 </p>
 
-                </section>
+            </section>
+            <section class="lab-questions">
+                <h2>Lab 17 - Preguntas a responder</h2>
+
+                <h3>¿Qué ventajas tiene escribir el código SQL únicamente en la capa del modelo?</h3>
+
+                <p>
+                Escribir el código SQL únicamente en la capa del modelo permite mantener
+                una mejor organización del proyecto siguiendo el patrón de arquitectura
+                <strong>MVC (Modelo - Vista - Controlador)</strong>.
+                </p>
+
+                <p>
+                Al colocar las consultas SQL dentro del modelo, se separa la lógica de acceso
+                a la base de datos del controlador y de las vistas. Esto hace que el código
+                sea más claro, más fácil de mantener y más reutilizable.
+                </p>
+
+                <p>
+                Además, si en algún momento se necesita modificar la forma en la que se
+                realizan las consultas o cambiar la estructura de la base de datos, los
+                cambios se realizan únicamente en el modelo sin afectar el resto de la
+                aplicación.
+                </p>
+
+                <h3>¿Qué es SQL Injection y cómo se puede prevenir?</h3>
+
+                <p>
+                La <strong>SQL Injection</strong> es un tipo de ataque de seguridad en el cual
+                un usuario malintencionado introduce código SQL dentro de los campos de
+                entrada de una aplicación web con el objetivo de manipular las consultas
+                que se ejecutan en la base de datos.
+                </p>
+
+                <p>
+                Este tipo de ataque puede permitir acceder a información sensible, modificar
+                registros o incluso eliminar datos de la base de datos si la aplicación no
+                valida correctamente las entradas del usuario.
+                </p>
+
+                <p>
+                Una forma efectiva de prevenir SQL Injection es utilizando
+                <strong>consultas parametrizadas</strong>, como las que se utilizan en el
+                paquete <code>mysql2</code>, donde los valores se pasan mediante signos
+                de interrogación (<code>?</code>) en lugar de concatenarlos directamente
+                en la consulta SQL.
+                </p>
+
+                <p>
+                De esta forma, el motor de la base de datos interpreta los valores únicamente
+                como datos y no como parte del código SQL, evitando que se ejecuten
+                instrucciones maliciosas.
+                </p>
+
+            </section>
+            <section>
                 <h2>Fuentes Consultadas</h2>
                 <ul class ="apa-list">
                     <li>

@@ -1,53 +1,42 @@
-const fs = require('fs');
-const path = require('path');
+const db = require('../util/database');
 
 module.exports = class Usuario {
-    constructor(datos) {
-        this.password = datos.password;
-        this.fecha = new Date().toLocaleString();
+    constructor(password) {
+        this.password = password;
+        this.fecha = new Date();
     }
+
     save() {
-        fs.appendFileSync(
-            path.join(__dirname, '../data.txt'),
-            JSON.stringify(this) + '\n'
+        return db.execute(
+            'INSERT INTO usuarios (password, fecha) VALUES (?, ?)',
+            [this.password, this.fecha]
         );
     }
 
     static fetchAll() {
-        try {
-            const data = fs.readFileSync(
-                path.join(__dirname, '../data.txt'),
-                'utf8'
-            );
-            return data.split('\n')
-                .filter(line => line)
-                .map(line => {
-                    try {
-                        return JSON.parse(line);
-                    } catch {
-                        return null;
-                    }
-                })
-                .filter(u => u !== null);
-        } catch {
-            return [];
-
-        }
+        return db.execute(
+            'SELECT * FROM usuarios'
+        );
     }
 
     static delete(password) {
-        const usuarios = this.fetchAll();
-        const filtrados = usuarios.filter(
-            u => u.password !== password
+        return db.execute(
+            'DELETE FROM usuarios WHERE password = ?',
+            [password]
         );
-        const data = filtrados
-            .map(u => JSON.stringify(u))
-            .join('\n');
-        fs.writeFileSync(
-            path.join(__dirname, '../data.txt'),
-            data
-        );
-
     }
 
+    static findById(id) {
+        return db.execute(
+            'SELECT * FROM usuarios WHERE id = ?',
+            [id]
+        );
+    }
+
+    static updatePassword(id, password) {
+        return db.execute(
+            'UPDATE usuarios SET password = ? WHERE id = ?',
+            [password, id]
+        );
+    }
 };
