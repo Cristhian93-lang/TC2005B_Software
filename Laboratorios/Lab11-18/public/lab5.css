@@ -25,3 +25,41 @@
 .card-content p {
     color: #212121;
 }
+
+.nav-wrapper{
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.brand-logo{
+position:relative !important;
+left:0 !important;
+margin-right:50px;
+}
+
+.nav-wrapper ul{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.logout-btn{
+position:absolute;
+right:20px;
+}
+
+.user-area{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.user-area i{
+margin:0;
+}
+
+.logout-btn{
+margin-left:10px;
+}

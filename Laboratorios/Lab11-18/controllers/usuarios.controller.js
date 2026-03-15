@@ -1,48 +1,72 @@
+const bcrypt = require('bcryptjs');
 const Usuario = require('../models/usuario.model');
-exports.getUsuarios = (req, res) => {
-    if (!req.session.visitas) {
-        req.session.visitas = 1;
-    } else {
-        req.session.visitas++;
+
+exports.getLogin = (req, res, next) => {
+    res.render('login', {
+        title: 'Login',
+        useMaterialize: true
+    });
+};
+
+exports.getSignup = (req, res, next) => {
+    res.render('signup', {
+        title: 'Crear cuenta',
+        useMaterialize: true
+    });
+};
+
+exports.postSignup = (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (!username || !password) {
+        return res.redirect('/usuarios/signup');
     }
-    Usuario.fetchAll()
+    bcrypt.hash(password, 12)
+    .then(hashedPassword => {
+        const usuario = new Usuario(username, hashedPassword);
+        return usuario.save();
+    })
+    .then(() => {
+        res.redirect('/usuarios/login');
+    })
+    .catch(err => {
+        console.log(err);
+        res.redirect('/usuarios/signup');
+    });
+
+};
+
+exports.postLogin = (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    Usuario.findByUsername(username)
     .then(([rows]) => {
-    console.log(rows);
-        console.log("USUARIOS EN MYSQL:", rows);
-        res.render('index', {
-            usuarios: rows,
-            usuarioActivo: req.session.usuario,
-            visitas: req.session.visitas,
-            title: 'Aegis Account',
-            css: 'style.css',
-            bodyClass: ''
+        if (rows.length === 0) {
+            return res.redirect('/usuarios/login');
+        }
+        const usuario = rows[0];
+        return bcrypt.compare(password, usuario.password)
+        .then(result => {
+            if (!result) {
+                return res.redirect('/usuarios/login');
+            }
+            req.session.isLoggedIn = true;
+            req.session.usuario = usuario.username;
+            return req.session.save(err => {
+                res.redirect('/lab5');
+            });
         });
     })
     .catch(err => {
-        console.log("ERROR MYSQL:", err);
-        res.send("Error en base de datos");
+        console.log(err);
+        res.redirect('/usuarios/login');
     });
 };
 
-exports.addUsuario = (req, res) => {
-    const usuario = new Usuario(req.body.password);
-    usuario.save()
-    .then(() => {
-        res.redirect('/');
-    })
-    .catch(err => console.log(err));
-};
 
-exports.eliminarUsuario = (req, res) => {
-    Usuario.delete(req.body.password)
-    .then(() => {
-        res.redirect('/');
-    })
-    .catch(err => console.log(err));
-};
-
-exports.logout = (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/');
+exports.logout = (req, res, next) => {
+    req.session.destroy(err => {
+        res.redirect('/usuarios/login');
     });
+
 };

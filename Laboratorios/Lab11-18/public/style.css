@@ -161,3 +161,11 @@ textarea {
     background-color: white;
     color: black;
 }
+
+.input-field input {
+    color: white !important;
+}
+
+.btn-space {
+    margin-right: 30px !important;
+}

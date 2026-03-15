@@ -4,21 +4,7 @@
             bodyClass: 'grey lighten-4',
             useMaterialize: true
         }) %>
-        <nav class="gradient-nav z-depth-2">
-            <div class="nav-wrapper container">
-                <a href="#" class="brand-logo">Mi Proyecto Web</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#sobre-mi">Sobre Mi</a></li>
-                    <li><a href="#preguntas">Preguntas</a></li>
-                    <li><a href="#sistemas">Sistemas de Informacion</a></li>
-                    <li><a href="#css-preguntas">CSS</a></li>
-                    <li><a href="#javaScript-preguntas">JavaScript</a></li>
-                    <li><a href="#material-design">Material Design</a></li>
-                    <li><a href="#formulario">Contacto</a></li>
-                    <li><a href="#referencias">Referencias</a></li>
-                </ul>
-            </div>
-        </nav>
+       <%- include('includes/_navbar', { usuario: usuario }) %>
         <header class="section center">
             <div class="container">
                 <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
@@ -400,6 +386,10 @@
                 </div>
             </section>
             <section id="material-design" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">quiz</i>
+                    Material Design
+                </h4>
                 <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
                     <div class="card-content">
                         <span class="card-title">¿Qué es Material Design?</span>
@@ -412,6 +402,47 @@
                             tipografía clara, jerarquía visual y diseño adaptable (responsive) para garantizar
                             una experiencia coherente en diferentes dispositivos y plataformas.
                         </p>
+                    </div>
+                </div>
+            </section>
+            <section id="lab18-preguntas" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                <i class="material-icons left">security</i>
+                    Autentificacion
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                ¿Qué otras formas de autentificación existen?
+                                </span>
+                                <p>
+                                Además de la autenticación mediante usuario y contraseña, existen diferentes
+                                métodos que permiten verificar la identidad de un usuario de manera más
+                                segura. Uno de los más utilizados es la autenticación de dos factores
+                                (2FA), la cual combina algo que el usuario sabe, como una contraseña,
+                                con algo que posee, como un código enviado al teléfono o generado por
+                                una aplicación de autenticación.
+                                </p>
+
+                                <p>
+                                También existe la autenticación biométrica, que utiliza características
+                                físicas del usuario como la huella dactilar, el reconocimiento facial o
+                                el escaneo del iris. Este tipo de autenticación es cada vez más común en
+                                dispositivos móviles y sistemas de seguridad modernos.
+                                </p>
+
+                                <p>
+                                Otra alternativa es el uso de tokens de seguridad o llaves físicas que
+                                generan códigos temporales para iniciar sesión. Asimismo, muchos sitios
+                                web permiten autenticarse mediante proveedores externos como Google,
+                                GitHub o Facebook utilizando protocolos como OAuth, lo cual simplifica
+                                el acceso y mejora la seguridad.
+                                </p>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -1,4 +1,28 @@
 //----------Ejercicio 1--------
+document.addEventListener('DOMContentLoaded', function () {
+    const elems = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(elems, {
+        closeOnClick: true,
+        coverTrigger: false
+    });
+
+});
+
+document.querySelectorAll('#dropdown-mas a').forEach(link => {
+    link.addEventListener('click', function(){
+        const id = this.getAttribute('href');
+        setTimeout(() => {
+            const target = document.querySelector(id);
+            if(target){
+                target.scrollIntoView({
+                behavior: "smooth"
+                });
+            }
+        },200);
+
+    });
+
+});
 
 let numero = parseInt(
     prompt("Introduce un numero para generar una tabla con sus cuadrados y cubos:")

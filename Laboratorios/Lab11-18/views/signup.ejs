@@ -1,0 +1,31 @@
+<%- include('includes/_head', {
+    title: 'Crear cuenta',
+    css: 'style.css',
+    bodyClass: 'grey lighten-4',
+    useMaterialize: true
+}) %>
+
+<div class="container">
+    <h3 class="center-align">Crear cuenta</h3>
+    <div class="row">
+        <form class="col s12" action="/usuarios/signup" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="input-field">
+                <input id="username" name="username" type="text" required>
+                <label for="username">Nombre de usuario</label>
+            </div>
+            <div class="input-field">
+                <input id="password" name="password" type="password" required>
+                <label for="password">Contraseña</label>
+            </div>
+            <button class="btn green btn-space" type="submit">
+                Crear cuenta
+            </button>
+
+            <a href="/usuarios/login" class="btn grey">
+                Volver al login
+            </a>
+        </form>
+    </div>
+</div>
+<%- include('includes/_footer') %>
