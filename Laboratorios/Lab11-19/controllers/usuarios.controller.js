@@ -28,12 +28,13 @@ exports.postSignup = (req, res, next) => {
     })
     .then(() => {
         res.redirect('/usuarios/login');
+
     })
     .catch(err => {
         console.log(err);
         res.redirect('/usuarios/signup');
-    });
 
+    });
 };
 
 exports.postLogin = (req, res, next) => {
@@ -46,14 +47,22 @@ exports.postLogin = (req, res, next) => {
         }
         const usuario = rows[0];
         return bcrypt.compare(password, usuario.password)
-        .then(result => {
-            if (!result) {
+        .then(match => {
+            if (!match) {
                 return res.redirect('/usuarios/login');
             }
             req.session.isLoggedIn = true;
             req.session.usuario = usuario.username;
-            return req.session.save(err => {
-                res.redirect('/lab5');
+            return Usuario.getPrivilegios(usuario.username)
+            .then(([privRows]) => {
+                const privilegios = privRows.map(p => p.accion);
+                req.session.privilegios = privilegios;
+                return req.session.save(err => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.redirect('/lab5');
+                });
             });
         });
     })
@@ -63,10 +72,11 @@ exports.postLogin = (req, res, next) => {
     });
 };
 
-
 exports.logout = (req, res, next) => {
     req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+        }
         res.redirect('/usuarios/login');
     });
-
 };

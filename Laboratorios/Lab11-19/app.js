@@ -12,7 +12,6 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.urlencoded({ extended: false }));
 
-
 app.use(session({
     secret: 'mi_secreto_super_seguro',
     resave: false,
@@ -22,7 +21,10 @@ app.use(session({
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.usuario = req.session.usuario;
+    res.locals.rol = req.session.rol;
+    res.locals.privilegios = req.session.privilegios || [];
     next();
+
 });
 
 app.use(csrfProtection);
@@ -41,15 +43,17 @@ app.get('/', (req, res) => {
     res.redirect('/usuarios/login');
 });
 
-app.get('/lab5', isAuth, (req, res) => {
+app.get('/lab5',
+isAuth.isAuth,
+(req, res) => {
     res.render('lab5', {
         title: 'Laboratorio 5',
         css: 'lab5.css',
         bodyClass: 'grey lighten-4',
-        usuario: req.session.usuario
+        usuario: req.session.usuario,
+        rol: req.session.rol
     });
 });
-
 app.use((req, res) => {
     res.status(404).send('404 - Ruta no encontrada');
 });
