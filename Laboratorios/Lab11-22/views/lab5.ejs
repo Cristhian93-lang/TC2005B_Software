@@ -7,15 +7,19 @@
        <%- include('includes/_navbar', { usuario: usuario }) %>
         <header class="section center">
             <div class="container">
-                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in profile-summary-card">
+                    <a href="/usuarios/perfil/editar" class="profile-edit-fab tooltipped"
+                        data-position="left" data-tooltip="Editar perfil">
+                        <i class="material-icons">edit</i>
+                    </a>
                     <div class="card-content">
-                        <img src="/img/foto.jpg"
-                            alt="Foto de Cristhian Viery Maida Suarez"
-                            class="circle responsive-img"
-                            style="width:160px;">
-                        <h5>Cristhian Viery Maida Suarez</h5>
-                        <p>Matricula: A01668790</p>
-                        <p>Correo: A01668790@tec.mx</p>
+                        <img src="<%= (perfil && perfil.foto) || '/img/foto.jpg' %>"
+                            alt="Foto de perfil de <%= (perfil && perfil.username) || usuario %>"
+                            class="circle responsive-img profile-main-image">
+                        <h5><%= (perfil && perfil.nombre) || usuario %></h5>
+                        <p>Matricula: <%= (perfil && perfil.matricula) || 'No registrada' %></p>
+                        <p>Correo: <%= (perfil && perfil.correo) || 'No registrado' %></p>
+                        <p class="profile-owner">Perfil activo: <strong><%= usuario %></strong></p>
                     </div>
                 </div>
             </div>

@@ -6,11 +6,14 @@ const csrf = require('csurf');
 const usuariosRoutes = require('./routes/usuarios.routes');
 const infoRoutes = require('./routes/info.routes');
 const isAuth = require('./util/is-auth');
+const usuariosController = require('./controllers/usuarios.controller');
+const fileUpload = require('./util/file-upload');
 const csrfProtection = csrf();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.urlencoded({ extended: false }));
+app.use(fileUpload.single('foto'));
 
 app.use(session({
     secret: 'mi_secreto_super_seguro',
@@ -23,6 +26,7 @@ app.use((req, res, next) => {
     res.locals.usuario = req.session.usuario;
     res.locals.rol = req.session.rol;
     res.locals.privilegios = req.session.privilegios || [];
+    res.locals.foto = req.session.foto || null;
     next();
 
 });
@@ -35,6 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/usuarios', usuariosRoutes);
 app.use('/info', infoRoutes);
@@ -45,15 +50,8 @@ app.get('/', (req, res) => {
 
 app.get('/lab5',
 isAuth.isAuth,
-(req, res) => {
-    res.render('lab5', {
-        title: 'Laboratorio 5',
-        css: 'lab5.css',
-        bodyClass: 'grey lighten-4',
-        usuario: req.session.usuario,
-        rol: req.session.rol
-    });
-});
+usuariosController.getLab5
+);
 app.use((req, res) => {
     res.status(404).send('404 - Ruta no encontrada');
 });
