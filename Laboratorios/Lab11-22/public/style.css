@@ -170,6 +170,51 @@ textarea {
     margin-right: 30px !important;
 }
 
+.upload-hint {
+    color: rgba(255, 255, 255, 0.75);
+    text-align: left;
+    margin-top: -0.4em;
+    margin-bottom: 1em;
+    font-size: 0.9em;
+}
+
+.profile-edit-container {
+    width: min(52em, 95%);
+}
+
+.profile-edit-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1.2em;
+}
+
+.profile-edit-card .card-content {
+    color: white;
+}
+
+.profile-edit-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.6em;
+}
+
+.profile-edit-image {
+    width: 10.5em;
+    height: 10.5em;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    display: block;
+    overflow: hidden;
+}
+
+.profile-edit-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+}
+
 .admin-container {
     width: min(78em, 95%);
     text-align: left;
@@ -263,6 +308,24 @@ textarea {
 .admin-date {
     color: rgba(255, 255, 255, 0.75);
     max-width: 16em;
+}
+
+.admin-avatar {
+    width: 3.4em;
+    height: 3.4em;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    display: block;
+}
+
+.admin-avatar-fallback {
+    background: rgba(126, 224, 255, 0.14);
+    color: #8ad4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .role-badge {

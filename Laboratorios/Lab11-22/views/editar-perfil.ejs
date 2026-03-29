@@ -1,0 +1,82 @@
+<%- include('includes/_head', {
+    title: 'Editar perfil',
+    css: 'style.css',
+    bodyClass: 'grey lighten-4',
+    useMaterialize: true
+}) %>
+
+<div class="container profile-edit-container">
+    <div class="admin-header">
+        <div>
+            <p class="admin-eyebrow">Perfil personal</p>
+            <h3 class="left-align">Editar perfil</h3>
+            <p class="admin-description">
+                Actualiza tus datos personales y, si quieres, reemplaza tu foto actual.
+            </p>
+        </div>
+        <a href="/lab5" class="btn grey admin-back-btn">Volver</a>
+    </div>
+
+    <div class="card hoverable z-depth-2 profile-edit-card">
+        <div class="card-content">
+            <div class="profile-edit-preview">
+                <img
+                    src="<%= (perfil && perfil.foto) || '/img/foto.jpg' %>"
+                    alt="Foto de perfil"
+                    class="profile-main-image profile-edit-image">
+            </div>
+
+            <form action="/usuarios/perfil/editar" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="input-field">
+                    <input
+                        id="nombre"
+                        name="nombre"
+                        type="text"
+                        value="<%= (perfil && perfil.nombre) || '' %>">
+                    <label for="nombre" class="active">Nombre</label>
+                </div>
+
+                <div class="input-field">
+                    <input
+                        id="matricula"
+                        name="matricula"
+                        type="text"
+                        value="<%= (perfil && perfil.matricula) || '' %>">
+                    <label for="matricula" class="active">Matricula</label>
+                </div>
+
+                <div class="input-field">
+                    <input
+                        id="correo"
+                        name="correo"
+                        type="email"
+                        value="<%= (perfil && perfil.correo) || '' %>">
+                    <label for="correo" class="active">Correo</label>
+                </div>
+
+                <div class="file-field input-field">
+                    <div class="btn blue">
+                        <span>Nueva foto</span>
+                        <input id="foto" name="foto" type="file" accept=".png,.jpg,.jpeg">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text"
+                            placeholder="Sube una nueva imagen PNG, JPG o JPEG">
+                    </div>
+                </div>
+
+                <p class="upload-hint">Si no seleccionas una nueva imagen, la foto actual se conserva.</p>
+
+                <div class="profile-edit-actions">
+                    <button class="btn blue darken-3 waves-effect waves-light" type="submit">
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('includes/_footer') %>

@@ -1,16 +1,21 @@
 const db = require('../util/database');
 module.exports = class Usuario {
 
-    constructor(username, password) {
+    constructor(username, password, foto = null, nombre = null, matricula = null, correo = null) {
         this.username = username;
         this.password = password;
+        this.foto = foto;
+        this.nombre = nombre;
+        this.matricula = matricula;
+        this.correo = correo;
         this.fecha = new Date();
     }
 
     save() {
         return db.execute(
-            'INSERT INTO usuarios (username, password, fecha) VALUES (?, ?, ?)',
-            [this.username, this.password, this.fecha]
+            `INSERT INTO usuarios (username, password, nombre, matricula, correo, foto, fecha)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [this.username, this.password, this.nombre, this.matricula, this.correo, this.foto, this.fecha]
         )
         .then(([result]) => {
             return db.execute(
@@ -31,7 +36,7 @@ module.exports = class Usuario {
 
     static findByUsername(username) {
         return db.execute(
-            `SELECT u.id, u.username, u.password, r.nombre AS rol
+            `SELECT u.id, u.username, u.password, u.nombre, u.matricula, u.correo, u.foto, r.nombre AS rol
             FROM usuarios u
             JOIN usuario_rol ur ON u.id = ur.id_usuario
             JOIN roles r ON ur.id_rol = r.id_rol
@@ -54,7 +59,7 @@ module.exports = class Usuario {
 
     static fetchUsersWithRoles() {
         return db.execute(`
-            SELECT u.id, u.username, u.fecha, COALESCE(r.nombre, 'sin rol') AS rol
+            SELECT u.id, u.username, u.nombre, u.foto, u.fecha, COALESCE(r.nombre, 'sin rol') AS rol
             FROM usuarios u
             LEFT JOIN usuario_rol ur ON u.id = ur.id_usuario
             LEFT JOIN roles r ON ur.id_rol = r.id_rol
@@ -81,5 +86,36 @@ module.exports = class Usuario {
                 [idUsuario, idRol]
             );
         });
+    }
+
+    static updateFoto(username, foto) {
+        return db.execute(
+            'UPDATE usuarios SET foto = ? WHERE username = ?',
+            [foto, username]
+        );
+    }
+
+    static fetchProfileByUsername(username) {
+        return db.execute(
+            `SELECT id, username, nombre, matricula, correo, foto, fecha
+            FROM usuarios
+            WHERE username = ?`,
+            [username]
+        );
+    }
+
+    static updateProfile(username, profileData) {
+        return db.execute(
+            `UPDATE usuarios
+            SET nombre = ?, matricula = ?, correo = ?, foto = ?
+            WHERE username = ?`,
+            [
+                profileData.nombre,
+                profileData.matricula,
+                profileData.correo,
+                profileData.foto,
+                username,
+            ]
+        );
     }
 };

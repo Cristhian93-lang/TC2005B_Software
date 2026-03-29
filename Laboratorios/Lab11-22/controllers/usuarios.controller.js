@@ -18,12 +18,23 @@ exports.getSignup = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
+    const nombre = req.body.nombre || null;
+    const matricula = req.body.matricula || null;
+    const correo = req.body.correo || null;
+    const foto = req.file ? `/${req.file.path.replace(/\\/g, '/')}` : null;
     if (!username || !password) {
         return res.redirect('/usuarios/signup');
     }
     bcrypt.hash(password, 12)
     .then(hashedPassword => {
-        const usuario = new Usuario(username, hashedPassword);
+        const usuario = new Usuario(
+            username,
+            hashedPassword,
+            foto,
+            nombre,
+            matricula,
+            correo
+        );
         return usuario.save();
     })
     .then(() => {
@@ -54,6 +65,7 @@ exports.postLogin = (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.usuario = usuario.username;
             req.session.rol = usuario.rol;
+            req.session.foto = usuario.foto;
             return Usuario.getPrivilegios(usuario.username)
             .then(([privRows]) => {
                 const privilegios = privRows.map(p => p.accion);
@@ -118,5 +130,98 @@ exports.postActualizarRol = (req, res, next) => {
     .catch(err => {
         console.log(err);
         res.status(500).send('No se pudo actualizar el rol del usuario');
+    });
+};
+
+exports.postActualizarFoto = (req, res, next) => {
+    if (!req.file) {
+        return res.redirect('/lab5');
+    }
+
+    const foto = `/${req.file.path.replace(/\\/g, '/')}`;
+
+    Usuario.updateFoto(req.session.usuario, foto)
+    .then(() => {
+        req.session.foto = foto;
+        req.session.save(err => {
+            if (err) {
+                console.log(err);
+            }
+            res.redirect('/lab5');
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('No se pudo actualizar la foto del perfil');
+    });
+};
+
+exports.getLab5 = (req, res, next) => {
+    Usuario.fetchProfileByUsername(req.session.usuario)
+    .then(([rows]) => {
+        const perfil = rows[0];
+        res.render('lab5', {
+            title: 'Laboratorio 5',
+            css: 'lab5.css',
+            bodyClass: 'grey lighten-4',
+            usuario: req.session.usuario,
+            rol: req.session.rol,
+            perfil,
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('No se pudo cargar el perfil');
+    });
+};
+
+exports.getEditarPerfil = (req, res, next) => {
+    Usuario.fetchProfileByUsername(req.session.usuario)
+    .then(([rows]) => {
+        res.render('editar-perfil', {
+            title: 'Editar perfil',
+            css: 'style.css',
+            bodyClass: 'grey lighten-4',
+            useMaterialize: true,
+            perfil: rows[0],
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('No se pudo cargar la vista de perfil');
+    });
+};
+
+exports.postEditarPerfil = (req, res, next) => {
+    const nombre = req.body.nombre || null;
+    const matricula = req.body.matricula || null;
+    const correo = req.body.correo || null;
+
+    Usuario.fetchProfileByUsername(req.session.usuario)
+    .then(([rows]) => {
+        const perfilActual = rows[0];
+        const foto = req.file
+            ? `/${req.file.path.replace(/\\/g, '/')}`
+            : perfilActual.foto;
+
+        return Usuario.updateProfile(req.session.usuario, {
+            nombre,
+            matricula,
+            correo,
+            foto,
+        })
+        .then(() => {
+            req.session.foto = foto;
+            return req.session.save(err => {
+                if (err) {
+                    console.log(err);
+                }
+                res.redirect('/lab5');
+            });
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('No se pudo actualizar el perfil');
     });
 };

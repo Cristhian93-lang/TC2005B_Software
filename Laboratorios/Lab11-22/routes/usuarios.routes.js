@@ -22,6 +22,16 @@ isAuth.tienePrivilegio('administrar_roles'),
 usuariosController.postActualizarRol
 );
 
+router.get('/perfil/editar',
+isAuth.isAuth,
+usuariosController.getEditarPerfil
+);
+
+router.post('/perfil/editar',
+isAuth.isAuth,
+usuariosController.postEditarPerfil
+);
+
 router.get('/editar',
 isAuth.tienePrivilegio('editar_contenido'),
 (req,res)=>{
