@@ -1,0 +1,44 @@
+<nav class="gradient-nav z-depth-2">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Mi Proyecto Web</a>
+        <ul class="right hide-on-med-and-down">
+            <% if (privilegios.includes('ver_contenido')) { %>
+                <li><a href="#sobre-mi">Sobre Mi</a></li>
+                <li><a href="#preguntas">Preguntas</a></li>
+                <li><a href="#sistemas">Sistemas</a></li>
+                <li><a href="#material-design">Material Design</a></li>
+            <% } %>
+            <% if (privilegios.includes('editar_contenido')) { %>
+                <li><a href="#css-preguntas">CSS</a></li>
+                <li><a href="#javaScript-preguntas">JS</a></li>
+                <li><a href="/usuarios/editar">Editar</a></li>
+            <% } %>
+            <% if (privilegios.includes('ver_panel_admin')) { %>
+                <li><a href="/usuarios/admin">Admin</a></li>
+            <% } %>
+            <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown-mas">
+                    Más
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <% if (usuario) { %>
+                <li class="user-area">
+                    <i class="material-icons">person</i>
+                    <span class="username"><%= usuario %></span>
+                    <a href="/usuarios/logout" class="btn red logout-btn">
+                        Logout
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
+
+
+<ul id="dropdown-mas" class="dropdown-content">
+    <li><a href="#lab18-preguntas" class="scroll-link">Autentificacion</a></li>
+    <li><a href="#formulario" class="scroll-link">Contacto</a></li>
+    <li><a href="#referencias" class="scroll-link">Referencias</a></li>
+    <li><a href="#lab19-preguntas" class="scroll-link">RBAC</a></li>
+</ul>
