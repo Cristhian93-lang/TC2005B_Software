@@ -1,0 +1,105 @@
+<%- include('includes/_head', {
+    title: 'Panel administrador',
+    css: 'style.css',
+    bodyClass: 'grey lighten-4',
+    useMaterialize: true
+}) %>
+
+<div class="container admin-container">
+    <div class="admin-header">
+        <div>
+            <p class="admin-eyebrow">Administracion de Accesos</p>
+            <h3 class="left-align">Panel RBAC</h3>
+            <p class="admin-description">
+                Revisa los usuarios registrados y actualiza su rol dentro de la aplicacion.
+            </p>
+        </div>
+        <a href="/lab5" class="btn grey admin-back-btn">Volver</a>
+    </div>
+
+    <div class="admin-stats">
+        <div class="admin-stat-card">
+            <span class="admin-stat-number"><%= usuarios.length %></span>
+            <span class="admin-stat-label">Usuarios registrados</span>
+        </div>
+        <div class="admin-stat-card">
+            <span class="admin-stat-number"><%= roles.length %></span>
+            <span class="admin-stat-label">Roles disponibles</span>
+        </div>
+    </div>
+
+    <div class="admin-table-card">
+        <table class="highlight responsive-table admin-table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Usuario</th>
+                    <th>Rol actual</th>
+                    <th>Fecha</th>
+                    <th>Actualizar rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% usuarios.forEach(usuarioItem => { %>
+                    <tr data-user-row="<%= usuarioItem.id %>">
+                        <td>
+                            <% if (usuarioItem.foto) { %>
+                                <img
+                                    src="<%= usuarioItem.foto %>"
+                                    alt="Foto de <%= usuarioItem.username %>"
+                                    class="admin-avatar">
+                            <% } else { %>
+                                <div class="admin-avatar admin-avatar-fallback">
+                                    <span><%= usuarioItem.username.charAt(0).toUpperCase() %></span>
+                                </div>
+                            <% } %>
+                        </td>
+                        <td class="admin-username-cell">
+                            <span class="admin-username"><%= usuarioItem.username %></span>
+                        </td>
+                        <td>
+                            <span class="role-badge role-<%= usuarioItem.rol %>" data-role-badge>
+                                <%= usuarioItem.rol %>
+                            </span>
+                        </td>
+                        <td class="admin-date"><%= usuarioItem.fecha %></td>
+                        <td>
+                            <form action="/usuarios/admin/rol" method="POST" class="role-form ajax-role-form">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="id_usuario" value="<%= usuarioItem.id %>">
+                                <div class="input-field inline role-select-field">
+                                    <select name="id_rol" required>
+                                        <% roles.forEach(rolItem => { %>
+                                            <option
+                                                value="<%= rolItem.id_rol %>"
+                                                <%= rolItem.nombre === usuarioItem.rol ? 'selected' : '' %>>
+                                                <%= rolItem.nombre %>
+                                            </option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <button class="btn blue admin-save-btn" type="submit">
+                                    Guardar
+                                </button>
+                            </form>
+                            <div class="admin-row-message" aria-live="polite"></div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof M !== 'undefined') {
+            const elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        }
+    });
+</script>
+
+<script src="/ajax-admin.js"></script>
+
+<%- include('includes/_footer') %>
