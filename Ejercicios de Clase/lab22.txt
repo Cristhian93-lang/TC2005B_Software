@@ -1,0 +1,12 @@
+¿Qué desventajas identificas en la utilización de store procedures?
+
+Los stored procedures tienen varias ventajas, pero también algunas desventajas. 
+Una de ellas es que pueden ser más difíciles de depurar cuando ocurre un error, 
+ya que la lógica queda dentro de la base de datos y no siempre es tan fácil rastrear 
+el problema como en el código de una aplicación. Además, si se usan demasiado, 
+parte de la lógica de negocio queda concentrada en la base de datos, lo que puede 
+hacer más complicado el mantenimiento del sistema. Otra desventaja es que pueden 
+generar dependencia del motor de base de datos utilizado, ya que la sintaxis y 
+algunas funciones cambian entre sistemas como MySQL, SQL Server u Oracle. Finalmente, 
+cuando los procedimientos crecen mucho, también pueden volverse difíciles de leer 
+y modificar.
