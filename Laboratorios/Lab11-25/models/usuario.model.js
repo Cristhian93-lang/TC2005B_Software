@@ -12,19 +12,58 @@ module.exports = class Usuario {
     }
 
     save() {
-        return db.execute(
-            `INSERT INTO usuarios (username, password, nombre, matricula, correo, foto, fecha)
-            VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            [this.username, this.password, this.nombre, this.matricula, this.correo, this.foto, this.fecha]
-        )
+        let connection;
+
+        return db.getConnection()
+        .then((conn) => {
+            connection = conn;
+            return connection.beginTransaction();
+        })
+        .then(() => {
+            return connection.execute(
+                `INSERT INTO usuarios (username, password, nombre, matricula, correo, foto, fecha)
+                VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                [
+                    this.username,
+                    this.password,
+                    this.nombre,
+                    this.matricula,
+                    this.correo,
+                    this.foto,
+                    this.fecha,
+                ]
+            );
+        })
         .then(([result]) => {
-            return db.execute(
+            return connection.execute(
                 `INSERT INTO usuario_rol (id_usuario, id_rol)
                 SELECT ?, id_rol
                 FROM roles
                 WHERE nombre = ?`,
                 [result.insertId, 'usuario']
             );
+        })
+        .then(([result]) => {
+            if (result.affectedRows === 0) {
+                throw new Error('No se pudo asignar el rol inicial al usuario');
+            }
+
+            return connection.commit();
+        })
+        .then(() => {
+            connection.release();
+        })
+        .catch((error) => {
+            if (!connection) {
+                throw error;
+            }
+
+            return connection.rollback()
+            .catch(() => {})
+            .then(() => {
+                connection.release();
+                throw error;
+            });
         });
     }
 
@@ -76,15 +115,42 @@ module.exports = class Usuario {
     }
 
     static updateUserRole(idUsuario, idRol) {
-        return db.execute(
-            'DELETE FROM usuario_rol WHERE id_usuario = ?',
-            [idUsuario]
-        )
+        let connection;
+
+        return db.getConnection()
+        .then((conn) => {
+            connection = conn;
+            return connection.beginTransaction();
+        })
         .then(() => {
-            return db.execute(
+            return connection.execute(
+                'DELETE FROM usuario_rol WHERE id_usuario = ?',
+                [idUsuario]
+            );
+        })
+        .then(() => {
+            return connection.execute(
                 'INSERT INTO usuario_rol (id_usuario, id_rol) VALUES (?, ?)',
                 [idUsuario, idRol]
             );
+        })
+        .then(() => {
+            return connection.commit();
+        })
+        .then(() => {
+            connection.release();
+        })
+        .catch((error) => {
+            if (!connection) {
+                throw error;
+            }
+
+            return connection.rollback()
+            .catch(() => {})
+            .then(() => {
+                connection.release();
+                throw error;
+            });
         });
     }
 

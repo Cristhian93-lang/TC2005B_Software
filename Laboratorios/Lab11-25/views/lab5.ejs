@@ -526,7 +526,7 @@
                     </div>
                 </div>
             </section>
-            <section id="lab24-preguntas" class="container section">
+            <section id="lab25-preguntas" class="container section">
                 <h4 class="center blue-text text-darken-3">
                     <i class="material-icons left">sync</i>
                     AJAX
@@ -595,6 +595,62 @@
                                     JSON es un formato de intercambio de datos ligero y fácil de leer, tanto para
                                     personas como para programas. Se usa mucho con AJAX porque permite enviar
                                     objetos estructurados entre cliente y servidor de forma sencilla.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="lab25-transacciones" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">account_balance</i>
+                    Lab 25: Transacciones
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">¿Qué es una transacción y por qué es importante?</span>
+                                <p>
+                                    Una transacción es un conjunto de operaciones que la base de datos ejecuta
+                                    como una sola unidad lógica de trabajo. Su importancia es que evita estados
+                                    intermedios inconsistentes: o se completan todos los cambios, o no se guarda ninguno.
+                                </p>
+                                <p>
+                                    En este laboratorio se aplicó para proteger operaciones donde participan varias
+                                    tablas al mismo tiempo, especialmente <code>usuarios</code> y <code>usuario_rol</code>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">Propiedades ACID</span>
+                                <p>
+                                    <strong>Atomicidad:</strong> si una parte falla, todo se revierte con <code>ROLLBACK</code>.
+                                    <strong>Consistencia:</strong> la base de datos mantiene reglas válidas entre tablas.
+                                    <strong>Aislamiento:</strong> otras operaciones no deben ver estados intermedios.
+                                    <strong>Durabilidad:</strong> después de un <code>COMMIT</code>, los cambios permanecen guardados.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">Aplicación en Aegis Account</span>
+                                <p>
+                                    Se implementaron transacciones explícitas en el modelo de usuario para dos casos
+                                    críticos. El primero ocurre al registrar una cuenta: se inserta el usuario y luego
+                                    se asigna su rol inicial. El segundo ocurre al actualizar un rol: se elimina la
+                                    relación anterior y se inserta la nueva dentro de la misma transacción.
+                                </p>
+                                <p>
+                                    De esta forma, si la segunda operación falla, el sistema deshace los cambios y
+                                    evita que un usuario quede creado sin rol o que pierda temporalmente sus permisos.
                                 </p>
                             </div>
                         </div>

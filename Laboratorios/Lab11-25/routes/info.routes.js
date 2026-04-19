@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 router.get('/about', (req, res) => {
     res.send(`
-        <h1>Acerca de Lab 11</h1>
+        <h1>Acerca de Lab 11-25</h1>
         <p>Este laboratorio implementa Express con rutas modulares.</p>
         <a href="/">Inicio</a>
         `);
