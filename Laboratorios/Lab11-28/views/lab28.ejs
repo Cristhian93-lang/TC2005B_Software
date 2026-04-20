@@ -1,0 +1,341 @@
+<%- include('includes/_head', {
+    title: 'Laboratorio 28 - Triggers',
+    css: 'lab5.css',
+    bodyClass: 'grey lighten-4',
+    useMaterialize: true
+}) %>
+<%- include('includes/_navbar', { usuario: usuario }) %>
+
+<main>
+    <section class="container section">
+        <h3 class="center blue-text text-darken-3">
+            <i class="material-icons left">bolt</i>
+            Laboratorio 28: Triggers
+        </h3>
+        <p class="center grey-text">Disparadores en MySQL aplicados al proyecto Aegis Account</p>
+    </section>
+
+    <!-- Preguntas teóricas -->
+    <section id="lab28-preguntas" class="container section">
+        <h4 class="center blue-text text-darken-3">
+            <i class="material-icons left">quiz</i>
+            Preguntas Teóricas
+        </h4>
+        <div class="row">
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">¿Qué utilidad tiene un trigger (ventajas)?</span>
+                        <p>
+                            Un trigger es un bloque de código SQL que se ejecuta automáticamente en respuesta
+                            a un evento sobre una tabla, como un INSERT, UPDATE o DELETE. Su principal utilidad
+                            es automatizar reglas de negocio directamente en la base de datos, sin depender de
+                            que la aplicación las implemente correctamente.
+                        </p>
+                        <p>
+                            Entre sus ventajas destacan: la <strong>automatización de auditorías</strong>, ya
+                            que permiten registrar cambios sin modificar el código de la aplicación; el
+                            <strong>mantenimiento de la integridad referencial</strong> en casos que las
+                            restricciones normales no cubren; la <strong>centralización de reglas de negocio</strong>
+                            en la base de datos, asegurando que se apliquen sin importar desde dónde se haga la
+                            operación; y la <strong>reducción de código repetido</strong> en múltiples capas
+                            de la aplicación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">¿Tipos de triggers?</span>
+                        <p>
+                            En MySQL los triggers se clasifican según dos dimensiones que se combinan entre sí:
+                        </p>
+                        <p>
+                            <strong>Por momento de ejecución:</strong><br>
+                            <em>BEFORE</em> — se ejecuta antes de que la operación modifique los datos. Útil
+                            para validar o modificar los valores antes de guardarlos.<br>
+                            <em>AFTER</em> — se ejecuta después de que la operación se completó. Útil para
+                            acciones derivadas como auditoría o notificaciones.
+                        </p>
+                        <p>
+                            <strong>Por tipo de evento:</strong><br>
+                            <em>INSERT</em> — se dispara al insertar un registro.<br>
+                            <em>UPDATE</em> — se dispara al actualizar un registro.<br>
+                            <em>DELETE</em> — se dispara al eliminar un registro.
+                        </p>
+                        <p>
+                            Combinando ambas dimensiones existen <strong>6 tipos posibles</strong>:
+                            BEFORE INSERT, BEFORE UPDATE, BEFORE DELETE,
+                            AFTER INSERT, AFTER UPDATE y AFTER DELETE.
+                            Dentro del trigger se puede acceder a los valores con <code>OLD</code> (valores antes
+                            de la operación) y <code>NEW</code> (valores después).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">¿En qué casos NO son de utilidad?</span>
+                        <p>
+                            Los triggers no son recomendables en los siguientes escenarios:
+                        </p>
+                        <p>
+                            <strong>Lógica compleja de negocio:</strong> si la regla requiere múltiples
+                            consultas, condicionales elaboradas o llamadas externas, es mejor manejarla en
+                            la capa de aplicación donde es más fácil depurar.
+                        </p>
+                        <p>
+                            <strong>Rendimiento crítico:</strong> los triggers se ejecutan de forma sincrónica
+                            con cada operación, lo que puede degradar el rendimiento en tablas con alto volumen
+                            de escrituras.
+                        </p>
+                        <p>
+                            <strong>Depuración y mantenimiento:</strong> los errores causados por triggers son
+                            difíciles de rastrear, especialmente para desarrolladores que no conocen que existen.
+                            Esto aumenta la complejidad del sistema.
+                        </p>
+                        <p>
+                            <strong>Migraciones y cargas masivas:</strong> al migrar datos o hacer cargas bulk,
+                            los triggers se disparan por cada fila, lo que ralentiza enormemente el proceso.
+                            En estos casos suele desactivarse temporalmente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Triggers implementados -->
+    <section id="lab28-triggers" class="container section">
+        <h4 class="center blue-text text-darken-3">
+            <i class="material-icons left">code</i>
+            Triggers Implementados
+        </h4>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Tabla de auditoría</span>
+                        <p>
+                            Para registrar los eventos se creó la tabla <code>auditoria_usuarios</code>,
+                            que almacena el tipo de evento, el usuario afectado, el campo modificado
+                            y los valores anterior y nuevo.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TABLE IF NOT EXISTS auditoria_usuarios (
+    id               INT AUTO_INCREMENT PRIMARY KEY,
+    evento           VARCHAR(20)  NOT NULL,
+    id_usuario       INT,
+    username         VARCHAR(100),
+    campo_modificado VARCHAR(50)  DEFAULT NULL,
+    valor_anterior   TEXT         DEFAULT NULL,
+    valor_nuevo      TEXT         DEFAULT NULL,
+    fecha            DATETIME     DEFAULT CURRENT_TIMESTAMP
+);</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Trigger 1 — AFTER INSERT ON usuarios</span>
+                        <p>
+                            Cada vez que se registra un usuario nuevo, este trigger inserta
+                            automáticamente un registro de auditoría con el evento <em>REGISTRO</em>.
+                            Esto permite llevar un historial completo de altas sin modificar la
+                            lógica del controlador.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TRIGGER after_usuario_insert
+AFTER INSERT ON usuarios
+FOR EACH ROW
+BEGIN
+    INSERT INTO auditoria_usuarios (evento, id_usuario, username, fecha)
+    VALUES ('REGISTRO', NEW.id, NEW.username, NOW());
+END;</pre>
+                        <p class="grey-text text-darken-1" style="margin-top:8px;">
+                            <strong>Prueba:</strong>
+                            <code>INSERT INTO usuarios (...) VALUES (...);</code>
+                            luego <code>SELECT * FROM auditoria_usuarios;</code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Trigger 2 — AFTER UPDATE ON usuarios</span>
+                        <p>
+                            Al actualizar el perfil de un usuario, el trigger detecta qué campos
+                            cambiaron (nombre, correo, foto) y registra en auditoría el valor anterior
+                            y el nuevo para cada campo modificado. Usa el operador <code>&lt;=&gt;</code>
+                            (NULL-safe) para comparar correctamente valores que pueden ser NULL.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TRIGGER after_usuario_update
+AFTER UPDATE ON usuarios
+FOR EACH ROW
+BEGIN
+    IF NOT (OLD.nombre <=> NEW.nombre) THEN
+        INSERT INTO auditoria_usuarios
+            (evento, id_usuario, username, campo_modificado, valor_anterior, valor_nuevo, fecha)
+        VALUES ('ACTUALIZACION', NEW.id, NEW.username, 'nombre', OLD.nombre, NEW.nombre, NOW());
+    END IF;
+
+    IF NOT (OLD.correo <=> NEW.correo) THEN
+        INSERT INTO auditoria_usuarios
+            (evento, id_usuario, username, campo_modificado, valor_anterior, valor_nuevo, fecha)
+        VALUES ('ACTUALIZACION', NEW.id, NEW.username, 'correo', OLD.correo, NEW.correo, NOW());
+    END IF;
+
+    IF NOT (OLD.foto <=> NEW.foto) THEN
+        INSERT INTO auditoria_usuarios
+            (evento, id_usuario, username, campo_modificado, valor_anterior, valor_nuevo, fecha)
+        VALUES ('ACTUALIZACION', NEW.id, NEW.username, 'foto', OLD.foto, NEW.foto, NOW());
+    END IF;
+END;</pre>
+                        <p class="grey-text text-darken-1" style="margin-top:8px;">
+                            <strong>Prueba:</strong>
+                            <code>UPDATE usuarios SET nombre = 'Nuevo Nombre' WHERE username = 'tu_usuario';</code>
+                            luego <code>SELECT * FROM auditoria_usuarios WHERE evento = 'ACTUALIZACION';</code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Trigger 3 — AFTER DELETE ON usuario_rol</span>
+                        <p>
+                            El cambio de rol en Aegis Account opera con un DELETE seguido de un INSERT
+                            sobre la tabla <code>usuario_rol</code>. Este trigger captura el momento del
+                            DELETE para registrar qué rol fue removido, guardando el nombre del rol en
+                            <code>valor_anterior</code>.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TRIGGER after_rol_delete
+AFTER DELETE ON usuario_rol
+FOR EACH ROW
+BEGIN
+    DECLARE nombre_usuario VARCHAR(100);
+    DECLARE nombre_rol     VARCHAR(50);
+
+    SELECT username INTO nombre_usuario FROM usuarios WHERE id = OLD.id_usuario;
+    SELECT nombre   INTO nombre_rol     FROM roles     WHERE id_rol = OLD.id_rol;
+
+    INSERT INTO auditoria_usuarios
+        (evento, id_usuario, username, campo_modificado, valor_anterior, valor_nuevo, fecha)
+    VALUES
+        ('CAMBIO_ROL', OLD.id_usuario, nombre_usuario, 'rol', nombre_rol, NULL, NOW());
+END;</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Trigger 4 — AFTER INSERT ON usuario_rol</span>
+                        <p>
+                            Complementa al trigger anterior. Se dispara cuando se inserta el nuevo rol
+                            y registra en <code>valor_nuevo</code> el nombre del rol asignado.
+                            Juntos forman un historial completo: rol removido → rol asignado.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TRIGGER after_rol_insert
+AFTER INSERT ON usuario_rol
+FOR EACH ROW
+BEGIN
+    DECLARE nombre_usuario VARCHAR(100);
+    DECLARE nombre_rol     VARCHAR(50);
+
+    SELECT username INTO nombre_usuario FROM usuarios WHERE id = NEW.id_usuario;
+    SELECT nombre   INTO nombre_rol     FROM roles     WHERE id_rol = NEW.id_rol;
+
+    INSERT INTO auditoria_usuarios
+        (evento, id_usuario, username, campo_modificado, valor_anterior, valor_nuevo, fecha)
+    VALUES
+        ('CAMBIO_ROL', NEW.id_usuario, nombre_usuario, 'rol', NULL, nombre_rol, NOW());
+END;</pre>
+                        <p class="grey-text text-darken-1" style="margin-top:8px;">
+                            <strong>Prueba:</strong> cambia el rol de un usuario desde el panel Admin.
+                            Luego: <code>SELECT * FROM auditoria_usuarios WHERE evento = 'CAMBIO_ROL';</code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                    <div class="card-content">
+                        <span class="card-title">Trigger 5 (bonus) — BEFORE DELETE ON usuarios</span>
+                        <p>
+                            Este trigger impide eliminar a un usuario si es el único administrador
+                            del sistema. Antes de ejecutar el DELETE, cuenta cuántos otros usuarios
+                            tienen el rol de admin; si no hay ninguno, lanza un error con
+                            <code>SIGNAL SQLSTATE</code> y cancela la operación.
+                        </p>
+                        <pre class="grey lighten-3" style="padding:12px; border-radius:4px; overflow-x:auto; font-size:0.85rem;">CREATE TRIGGER before_usuario_delete
+BEFORE DELETE ON usuarios
+FOR EACH ROW
+BEGIN
+    DECLARE otros_admins INT;
+
+    SELECT COUNT(*) INTO otros_admins
+    FROM usuario_rol ur
+    JOIN roles r ON ur.id_rol = r.id_rol
+    WHERE r.nombre = 'admin'
+      AND ur.id_usuario != OLD.id;
+
+    IF otros_admins = 0 THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'No se puede eliminar al único administrador del sistema.';
+    END IF;
+END;</pre>
+                        <p class="grey-text text-darken-1" style="margin-top:8px;">
+                            <strong>Prueba:</strong> intentar hacer
+                            <code>DELETE FROM usuarios WHERE id = &lt;id_del_admin&gt;;</code>
+                            — debe arrojar el error definido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utilidad para el reto -->
+    <section id="lab28-reto" class="container section">
+        <h4 class="center blue-text text-darken-3">
+            <i class="material-icons left">emoji_events</i>
+            Pertinencia para el Reto del Curso
+        </h4>
+        <div class="col s12">
+            <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                <div class="card-content">
+                    <span class="card-title">¿Por qué estos triggers son útiles en Aegis Account?</span>
+                    <p>
+                        Aegis Account es una aplicación de gestión de usuarios con roles y privilegios,
+                        donde la trazabilidad y la integridad de los datos son requisitos importantes.
+                    </p>
+                    <p>
+                        El trigger de <strong>auditoría en INSERT</strong> permite saber exactamente
+                        cuándo y qué usuarios se han registrado, sin depender de que el controlador
+                        lo registre explícitamente. El trigger de <strong>auditoría en UPDATE</strong>
+                        cubre el caso de uso de seguimiento de cambios de perfil, especialmente útil
+                        para detectar modificaciones no autorizadas. Finalmente, el trigger
+                        <strong>BEFORE DELETE</strong> garantiza que el sistema siempre cuente con al
+                        menos un administrador, protegiendo contra un estado irrecuperable en el panel
+                        de administración.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('includes/_footer', {
+    useMaterialize: true
+}) %>
