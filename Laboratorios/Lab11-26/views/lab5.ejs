@@ -526,7 +526,7 @@
                     </div>
                 </div>
             </section>
-            <section id="lab25-preguntas" class="container section">
+            <section id="lab24-preguntas" class="container section">
                 <h4 class="center blue-text text-darken-3">
                     <i class="material-icons left">sync</i>
                     AJAX
@@ -652,6 +652,98 @@
                                     De esta forma, si la segunda operación falla, el sistema deshace los cambios y
                                     evita que un usuario quede creado sin rol o que pierda temporalmente sus permisos.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="lab26-servicios-web" class="container section">
+                <h4 class="center blue-text text-darken-3">
+                    <i class="material-icons left">cloud_queue</i>
+                    Lab 26: Servicios Web
+                </h4>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">¿Qué es un servicio web?</span>
+                                <p>
+                                    Un servicio web es un componente de software que expone información o
+                                    funcionalidad para que otras aplicaciones la consuman a través de la red.
+                                    En este laboratorio se trabajó con la idea de reutilizar capacidades ya
+                                    desarrolladas por terceros en lugar de implementarlas desde cero.
+                                </p>
+                                <p>
+                                    En la evolución de los servicios web destacan enfoques como
+                                    <strong>SOAP</strong>, que suele apoyarse mucho en XML, y
+                                    <strong>REST</strong>, que organiza recursos y normalmente trabaja con HTTP
+                                    y JSON. Para esta aplicación se eligió consumir la <strong>Google Calendar API</strong>,
+                                    que es una API de tipo REST.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    ¿Qué ventajas y desventajas tiene integrar servicios web de terceros?
+                                </span>
+                                <p>
+                                    Entre las ventajas están el ahorro de tiempo de desarrollo, el acceso a
+                                    infraestructura especializada, la posibilidad de ofrecer funciones avanzadas
+                                    con poco código y el desacoplamiento entre sistemas. También facilita la
+                                    reutilización de servicios consolidados y reduce el esfuerzo de mantenimiento
+                                    en áreas que no forman parte del núcleo de la aplicación.
+                                </p>
+                                <p>
+                                    Como desventajas, la aplicación se vuelve dependiente de la disponibilidad
+                                    del proveedor, de sus límites de uso, de sus cambios de versión y de sus
+                                    políticas de autenticación. Además, integrar un API externo obliga a cuidar
+                                    temas como credenciales, manejo de errores, CORS y exposición segura de datos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12">
+                        <div class="card hoverable z-depth-2 blue-grey lighten-5 fade-in">
+                            <div class="card-content">
+                                <span class="card-title">Consumo de Google Calendar API</span>
+                                <p>
+                                    Esta sección consulta los próximos eventos del calendario autenticado usando
+                                    la Google Calendar API. La integración se hace del lado del cliente con las
+                                    bibliotecas oficiales de Google y con permisos de solo lectura.
+                                </p>
+
+                                <div id="calendar-api-root"
+                                    data-api-key="<%= googleCalendarConfig.apiKey %>"
+                                    data-client-id="<%= googleCalendarConfig.clientId %>"
+                                    data-discovery-doc="<%= googleCalendarConfig.discoveryDoc %>"
+                                    data-scope="<%= googleCalendarConfig.scope %>"
+                                    data-calendar-id="<%= googleCalendarConfig.calendarId %>">
+                                </div>
+
+                                <div id="calendar-missing-config" class="calendar-message amber lighten-5">
+                                    Configura <code>GOOGLE_CALENDAR_API_KEY</code> y
+                                    <code>GOOGLE_CALENDAR_CLIENT_ID</code> para habilitar esta integración.
+                                </div>
+
+                                <div class="calendar-actions">
+                                    <button id="calendar-authorize" class="btn blue darken-3" type="button">
+                                        Conectar Google Calendar
+                                    </button>
+                                    <button id="calendar-signout" class="btn grey" type="button">
+                                        Cerrar sesión de Google
+                                    </button>
+                                </div>
+
+                                <div id="calendar-status" class="calendar-message blue lighten-5">
+                                    Cargando integración de Google Calendar...
+                                </div>
+
+                                <ul id="calendar-events" class="collection calendar-events-list"></ul>
                             </div>
                         </div>
                     </div>
@@ -806,6 +898,7 @@
                     </div>
             </section>
         </main>
+        <script src="/google-calendar.js"></script>
         <%- include('includes/_footer', { 
             extraJS: 'intro2.js',
             useMaterialize: true
