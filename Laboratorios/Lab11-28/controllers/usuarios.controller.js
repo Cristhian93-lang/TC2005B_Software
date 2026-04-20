@@ -219,6 +219,17 @@ exports.getLab5 = (req, res, next) => {
     });
 };
 
+exports.getLab28 = (req, res, next) => {
+    res.render('lab28', {
+        title: 'Laboratorio 28 - Triggers',
+        css: 'lab5.css',
+        bodyClass: 'grey lighten-4',
+        useMaterialize: true,
+        usuario: req.session.usuario,
+        rol: req.session.rol,
+    });
+};
+
 exports.getEditarPerfil = (req, res, next) => {
     Usuario.fetchProfileByUsername(req.session.usuario)
     .then(([rows]) => {

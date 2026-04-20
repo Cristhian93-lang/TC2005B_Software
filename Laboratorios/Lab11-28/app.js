@@ -53,6 +53,11 @@ app.get('/lab5',
 isAuth.isAuth,
 usuariosController.getLab5
 );
+
+app.get('/lab28',
+isAuth.isAuth,
+usuariosController.getLab28
+);
 app.use((req, res) => {
     res.status(404).send('404 - Ruta no encontrada');
 });
