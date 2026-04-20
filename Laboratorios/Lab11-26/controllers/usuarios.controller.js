@@ -200,9 +200,17 @@ exports.getLab5 = (req, res, next) => {
             title: 'Laboratorio 5',
             css: 'lab5.css',
             bodyClass: 'grey lighten-4',
+            extraJS: 'google-calendar.js',
             usuario: req.session.usuario,
             rol: req.session.rol,
             perfil,
+            googleCalendarConfig: {
+                apiKey: process.env.GOOGLE_CALENDAR_API_KEY || '',
+                clientId: process.env.GOOGLE_CALENDAR_CLIENT_ID || '',
+                discoveryDoc: 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest',
+                scope: 'https://www.googleapis.com/auth/calendar.readonly',
+                calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+            },
         });
     })
     .catch(err => {
